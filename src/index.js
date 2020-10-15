@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import moment from 'moment';
+import App from './App';
 import 'moment/locale/id';
+import moment from 'moment';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import ErrorPage from './views/pages/ErrorPage';
-import App from './App';
 // import * as serviceWorker from './serviceWorker';
 moment().locale('id');
 
