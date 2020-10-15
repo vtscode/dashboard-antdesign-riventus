@@ -5,7 +5,6 @@ import 'moment/locale/id';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import ErrorPage from './views/pages/ErrorPage';
-// import './index.css';
 import App from './App';
 // import * as serviceWorker from './serviceWorker';
 moment().locale('id');
