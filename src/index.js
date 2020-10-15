@@ -5,16 +5,16 @@ import 'moment/locale/id';
 import moment from 'moment';
 import store from './redux/store';
 import { Provider } from 'react-redux';
-import ErrorPage from './views/pages/ErrorPage';
+import ErrorPage from './views/pages/ErrorBoundary';
 // import * as serviceWorker from './serviceWorker';
 moment().locale('id');
 
 ReactDOM.render(
   <ErrorPage>
     <Provider store={store}>
-      <React>
+      <React.Suspense>
         <App />
-      </React>
+      </React.Suspense>
     </Provider>
   </ErrorPage>,
   document.getElementById('root')
@@ -23,4 +23,4 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.register();
+// serviceWorker.register();
