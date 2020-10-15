@@ -1,5 +1,6 @@
 import interceptor from './interceptors';
 import { defaultPathDomain } from "../utils";
+// auth/local==> login , req_json => {"identifier":"riventus","password":"12345678"}
 export const headers = {
   'Accept': 'application/vnd.api+json',
   'Content-Type': 'application/vnd.api+json',

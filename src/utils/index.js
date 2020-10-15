@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 const initURL = process.env.REACT_APP_BASE_URL;
-const initialEndpoint = '/';
+const initialEndpoint = '/admin';
 const defaultPathDomain = initURL+initialEndpoint;
 // convert tgl
 const formatDateInput = (format = 'YYYY-MM-DD') => format;
