@@ -4,4 +4,5 @@ export default {
   login: '/login',
   register: '/register',
   forgotPass: '/lupa-password',
+  home: '/home',
 }
