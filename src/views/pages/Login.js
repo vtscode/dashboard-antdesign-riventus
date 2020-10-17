@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { noImagePath } from "../../utils";
+import network from "../../services/network";
+import pathName from "../../routes/pathName";
 import { Layout,Form,Card, Image } from "antd";
 import { setAuth } from "../../redux/auth/action";
 import InputForm from "../../components/InputForm";
-import network from "../../services/network";
-import pathName from "../../routes/pathName";
 import localStorageService from "../../services/localStorageService";
 
 const adminUserName = ['riventus'];
@@ -37,6 +37,17 @@ const Login = (props) => {
     }
   };
 
+  const checkingAuth = React.useCallback(() => {
+    if(localStorageService('auth').getAccessToken()?.user){
+      if(auth?.user){
+        props.history.replace(base);  
+      }else{
+        loggedIn(localStorageService('auth').getAccessToken());
+      }
+    }
+    return;
+  },[auth?.user]);
+
   const inputs = [
     { propsFormItem : { 
       name : 'identifier', rules: [{required : true, message : 'Username harus diisi'}] }, propsInput : { placeholder : 'Username', autoFocus: true} },
@@ -46,14 +57,8 @@ const Login = (props) => {
   ];
 
   React.useEffect(() => {
-    if(localStorageService('auth').getAccessToken()?.user){
-      if(auth?.user){
-        props.history.replace(base);  
-      }else{
-        loggedIn(localStorageService('auth').getAccessToken());
-      }
-    }
-  },[auth?.user]);
+    checkingAuth();
+  },[checkingAuth]);
 
   return(
     <Layout.Content>

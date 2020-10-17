@@ -5,7 +5,7 @@ export const headers = {
   'Accept': '*/*',
   'Content-Type': 'application/json',
 };
-export const configRequest = (method, url, data, headers = headers) => {
+export const configRequest = (method, url, data) => {
   return { headers ,method, url: `${initURL}${url}`, data };
 };
 
