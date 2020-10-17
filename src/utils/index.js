@@ -3,7 +3,7 @@ import moment from 'moment';
 const initURL = process.env.REACT_APP_BASE_URL;
 const initialEndpoint = '/admin';
 const defaultPathDomain = initURL+initialEndpoint;
-const noImagePath = 'assets/logo.png';
+const noImagePath = 'assets/logo.svg';
 // convert tgl
 const formatDateInput = (format = 'YYYY-MM-DD') => format;
 const formDateInputValue = (tgl = new Date(), format ='') => moment(tgl, format ? format : formatDateInput()); // output : Object { _isAMomentObject: true, ...}

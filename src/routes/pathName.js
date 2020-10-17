@@ -5,6 +5,9 @@ export default {
   register: '/register',
   forgotPass: '/lupa-password',
   home: '/home',
+  pages: {
+    page1 : '/page1'
+  },
 
   endpoint : {
     loginAdmin : '/admin/auth/local',

@@ -1,25 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Redirect, Route,Switch } from 'react-router-dom'
 import routes from "../routes";
+import pathName from "../routes/pathName";
+import NotFound from "../views/pages/NotFound";
+import { Route,Switch } from 'react-router-dom';
+import {LoadingState} from "../components/loading";
+import localStorageService from "../services/localStorageService";
 
-const ProtectedRoute = ({auth,history}) => {
-  
-  if (!auth?.user) {
-    history.replace('/login');
-    return false;
+const ProtectedRoute = ({history}) => {
+  const { login} = pathName;
+  if(!localStorageService('auth').getAccessToken()?.user){
+    history.replace(login);
   }
-
-  return(<Switch>
-  {routes.strict.map((route,idx) => (
-    <React.Fragment key={idx}>
-      <Route {...route} />
-    </React.Fragment>
-  ))}
-   <Redirect from="/" to="/home" />
-  </Switch>
-  );
+  return(
+  <React.Suspense fallback={<LoadingState />}>
+    <Switch>
+      {routes.strict.map((route,idx) => (<Route key={idx} {...route} />))}
+      <Route render={m => <NotFound />} />
+    </Switch>
+  </React.Suspense>);
 };
-const mapStateToProps = ({auth}) => ({auth});
 
-export default connect(mapStateToProps)(ProtectedRoute);
+export default ProtectedRoute;

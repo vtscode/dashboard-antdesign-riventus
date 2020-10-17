@@ -1,9 +1,32 @@
-#components-layout-demo-side .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
+.site-layout .site-layout-background {
+  background: $color-white;
+}
+.header{
+  &__menus{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__avatar{
+    float:right;
+    transform:translateY(.3em);
+    background-color: $color-white;
+    color: darkolivegreen;
+  }
+}
+.ant-layout-header{
+  background-color:$color-primary;
 }
 
-.site-layout .site-layout-background {
-  background: #fff;
+.ant-layout-sider-trigger{
+  background-color:$color-primary;
+}
+
+.contenpage__header{ 
+  background: $color-white;
+}
+.loading__fallback{
+  position: fixed;
+  right:0;left:0;
+  top:50%;
 }

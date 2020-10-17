@@ -1,13 +1,21 @@
+import React from 'react';
+import { UserOutlined, 
+  LaptopOutlined, 
+  NotificationOutlined 
+} from '@ant-design/icons';
+import pathName from "./pathName";
+
+const { home,pages } = pathName;
+
 export default {
   items: [
-    { name: 'Home', url: '/home', icon: 'icon-home' },
-    { name: 'Dashboard', url: '/dashboard', icon: 'icon-speedometer' },
+    { name: 'Home', url: home, icon: <UserOutlined/> },
     {
-      name: 'Beranda',
-      icon: 'icon-service',
-      url: '/services',
+      name: 'Pages',
+      icon: <NotificationOutlined />,
+      url: pages.page1,
       children: [
-        { name: 'Semua service', url: '/services', icon: 'icon-layers' },
+        { name: 'Page 1', url: pages.page1, icon: <LaptopOutlined /> },
       ]
     },
   ]

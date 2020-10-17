@@ -10,9 +10,9 @@ import localStorageService from "../../services/localStorageService";
 
 const adminUserName = ['riventus'];
 const Login = (props) => {
-  const { auth,loggedIn } = props;
+  const { loggedIn } = props;
   const [form] = Form.useForm();
-  const { endpoint,base } = pathName;
+  const { endpoint,home } = pathName;
   const [process,setprocess] = React.useState({loading : false, disabled : false });
 
   const handleSubmit = async (e) => {
@@ -28,7 +28,7 @@ const Login = (props) => {
       const resp = await network.post(loginpath,values);
       if(resp){
         await loggedIn(resp);
-        props.history.replace(base);
+        props.history.replace(home);
       }
       setprocess({ loading : false, disabled : false });
     } catch (error) {
@@ -36,17 +36,6 @@ const Login = (props) => {
       console.log(error);
     }
   };
-
-  const checkingAuth = React.useCallback(() => {
-    if(localStorageService('auth').getAccessToken()?.user){
-      if(auth?.user){
-        props.history.replace(base);  
-      }else{
-        loggedIn(localStorageService('auth').getAccessToken());
-      }
-    }
-    return;
-  },[auth?.user]);
 
   const inputs = [
     { propsFormItem : { 
@@ -57,8 +46,10 @@ const Login = (props) => {
   ];
 
   React.useEffect(() => {
-    checkingAuth();
-  },[checkingAuth]);
+    if(localStorageService('auth').getAccessToken()?.user){
+      props.history.replace(home);
+    }
+  },[])
 
   return(
     <Layout.Content>
@@ -75,10 +66,9 @@ const Login = (props) => {
   )
 };
 
-const mapStateToProps = ({auth}) => ({auth});
 const mapDispatchToProps = (dispatch) => {
   return {
     loggedIn: values => dispatch(setAuth(values)),
   };
 };
-export default connect(mapStateToProps,mapDispatchToProps)(Login);
+export default connect(null,mapDispatchToProps)(Login);

@@ -8,12 +8,13 @@ import store from './redux/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import ErrorPage from './views/pages/ErrorBoundary';
+import {LoadingState} from './components/loading';
 moment().locale('id');
 
 ReactDOM.render(
   <ErrorPage>
     <Provider store={store}>
-      <React.Suspense>
+      <React.Suspense fallback={<LoadingState />}>
         <App />
       </React.Suspense>
     </Provider>

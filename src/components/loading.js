@@ -9,9 +9,12 @@ export default (props) => {
       indicator={<LoadingOutlined type="loading" style={{ fontSize: 24 }} spin />} 
       delay={400} 
       size="large" 
-      tip="Loading data..."
+      tip="Loading..."
+      className='loading__fallback'
     >
       {props.children}
     </Spin>
   );
 };
+
+export const LoadingState = () => <Spin className='loading__fallback' indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />}  tip="Loading..."/>;
