@@ -4,9 +4,10 @@ import { Redirect, Route,Switch } from 'react-router-dom'
 import routes from "../routes";
 
 const ProtectedRoute = ({auth,history}) => {
-
+  
   if (!auth?.user) {
     history.replace('/login');
+    return false;
   }
 
   return(<Switch>

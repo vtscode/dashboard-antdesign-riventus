@@ -1,13 +1,12 @@
 import interceptor from './interceptors';
-import { defaultPathDomain } from "../utils";
-// auth/local==> login , req_json => {"identifier":"riventus","password":"12345678"}
+import { initURL } from "../utils";
+
 export const headers = {
-  'Accept': 'application/vnd.api+json',
-  'Content-Type': 'application/vnd.api+json',
-  'Access-Control-Allow-Origin': true
+  'Accept': '*/*',
+  'Content-Type': 'application/json',
 };
-export const configRequest = (method, url, data) => {
-  return { headers ,method, url: `${defaultPathDomain}${url}`, data };
+export const configRequest = (method, url, data, headers = headers) => {
+  return { headers ,method, url: `${initURL}${url}`, data };
 };
 
 export default {
@@ -17,7 +16,7 @@ export default {
       const { data } = await interceptor.request(conf);
       return data;
     } catch (err) {
-      throw err;
+      console.log(err);
     }
   },
   post: async (url, params) => {
@@ -27,7 +26,7 @@ export default {
       const { data } = await interceptor.request(conf);
       return data;
     } catch (err) {
-      throw err;
+      console.log(err);
     }
   },
   patch: async (url, params) => {
@@ -37,7 +36,7 @@ export default {
       const { data } = await interceptor.create({}).request(conf);
       return data;
     } catch (err) {
-      throw err;
+      console.log(err);
     }
   },
   put: async (url, params) => {
@@ -47,7 +46,7 @@ export default {
       const { data } = await interceptor.request(conf);
       return data;
     } catch (err) {
-      throw err;
+      console.log(err);
     }
   },
   delete: async (url, params) => {
@@ -57,7 +56,7 @@ export default {
       const { data } = await interceptor.request(conf);
       return data;
     } catch (err) {
-      throw err;
+      console.log(err);
     }
   }
 };
