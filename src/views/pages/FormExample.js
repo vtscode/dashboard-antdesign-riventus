@@ -1,10 +1,13 @@
 import React from 'react';
+import { Form } from "antd";
 import BaseLayout from "../frame/Base";
 import pathName from "../../routes/pathName";
+import { InputForm } from "../../components";
 
 export default (props) => {
   const { home } = pathName;
-  console.log(props);
+  const [form] = Form.useForm();
+  const [state,setState] = React.useState({})
 
   const contentProps = {
     breadcrumb : [
@@ -13,13 +16,33 @@ export default (props) => {
     ],
     title : 'Example Form',
     subtitle : 'This is example form input',
+  };
+
+  const inputs = [
+    { propsFormItem : { 
+      name : 'identifier', rules: [{required : true, message : 'Username harus diisi'}] }, propsInput : { placeholder : 'Username', autoFocus: true} },
+    { type : 'password', propsFormItem : { 
+      name : 'password', rules: [{required : true, message : 'Password harus diisi'}] }, propsInput : { placeholder : 'Password'} },
+    { type : 'button', text : 'Login', propsBtn : { ...process, type: 'primary', htmlType : 'submit', block:true,} },
+  ];
+
+  const handleSubmit = async (value) => {
+    try {
+      const values = await form.validateFields();
+      setState(values);
+    } catch (error) {
+      console.log(error?.message);
+    }
   }
 
   return(
     <BaseLayout {...contentProps}>
-      <div className="content">
-        asdasdas
-      </div>
+      <Form form={form} 
+        onFinish={handleSubmit} 
+        initialValues={{identifier: 'riventus',password : 'qweqwe123'}}
+      >
+        <InputForm inputs={inputs} />
+      </Form>
     </BaseLayout>
   )
 }
