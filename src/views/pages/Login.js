@@ -49,7 +49,8 @@ const Login = (props) => {
     if(localStorageService('auth').getAccessToken()?.user){
       props.history.replace(home);
     }
-  },[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   return(
     <Layout.Content>

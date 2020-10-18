@@ -8,11 +8,13 @@ import pathName from "../../routes/pathName";
 import {setAuth} from "../../redux/auth/action";
 import IsiContent from "../../components/Content";
 import localStorageService from "../../services/localStorageService";
+
 const {Content} = Layout;
-const LayoutContext = React.createContext();
+export const LayoutContext = React.createContext();
 
 const Base = (props) => {
-  const [state,setState] = React.useState({ mode : 'vertical', theme : 'light'});
+  const [state,setState] = React.useState({ mode : 'vertical', theme : 'light', colorheader : '#e0a453',});
+  
   if(localStorageService('auth').getAccessToken()?.user){
     props.loggedIn(localStorageService('auth').getAccessToken());
   }else{

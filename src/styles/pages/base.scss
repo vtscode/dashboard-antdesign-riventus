@@ -1,27 +1,3 @@
-.site-layout .site-layout-background {
-  background: $color-white;
-}
-.header{
-  &__menus{
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  &__avatar{
-    float:right;
-    transform:translateY(.3em);
-    background-color: $color-white;
-    color: darkolivegreen;
-  }
-}
-.ant-layout-header{
-  background-color:$color-primary;
-}
-
-.ant-layout-sider-trigger{
-  background-color:$color-primary;
-}
-
 .contenpage__header{ 
   background: $color-white;
 }

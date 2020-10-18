@@ -9,17 +9,16 @@ export default (props) => {
   const contentProps = {
     breadcrumb : [
       { text : 'Home', link : home },
-      { text : 'Page' },
+      { text : 'Form' },
     ],
-    title : 'Page 1',
-    subtitle : 'This is Subtitle page 1',
+    title : 'Example Form',
+    subtitle : 'This is example form input',
   }
 
   return(
     <BaseLayout {...contentProps}>
       <div className="content">
-        <div className="main">Page 1</div>
-        <div className="extra">Page</div>
+        asdasdas
       </div>
     </BaseLayout>
   )

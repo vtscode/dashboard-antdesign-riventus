@@ -1,5 +1,5 @@
-import interceptor from './interceptors';
 import { initURL } from "../utils";
+import interceptor from './interceptors';
 
 export const headers = {
   'Accept': '*/*',

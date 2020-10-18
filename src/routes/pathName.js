@@ -6,7 +6,8 @@ export default {
   forgotPass: '/lupa-password',
   home: '/home',
   pages: {
-    page1 : '/page1'
+    page1 : '/page1',
+    forms : '/forms',
   },
 
   endpoint : {

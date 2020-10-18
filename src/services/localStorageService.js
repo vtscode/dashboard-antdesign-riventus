@@ -1,6 +1,6 @@
 const LocalStorageService = (keyItem) => {
-  const _setToken = (auth_params) => {
-    localStorage.setItem(keyItem, JSON.stringify(auth_params));
+  const _setToken = (params) => {
+    localStorage.setItem(keyItem, JSON.stringify(params));
   };
 
   const _getAccessToken = () => {

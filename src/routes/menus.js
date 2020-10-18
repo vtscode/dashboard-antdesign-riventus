@@ -1,7 +1,8 @@
 import React from 'react';
 import { UserOutlined, 
   LaptopOutlined, 
-  NotificationOutlined 
+  NotificationOutlined,
+  FormOutlined
 } from '@ant-design/icons';
 import pathName from "./pathName";
 
@@ -18,5 +19,6 @@ export default {
         { name: 'Page 1', url: pages.page1, icon: <LaptopOutlined /> },
       ]
     },
+    { name: 'Forms', url: pages.forms, icon: <FormOutlined/> },
   ]
 }

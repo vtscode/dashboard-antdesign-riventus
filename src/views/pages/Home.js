@@ -15,7 +15,7 @@ export default (props) => {
   <BaseLayout {...contentProps}>
     <div className="content">
       <div className="main">Home page</div>
-      <div className="extra"></div>
+      <div className="extra">WHATS !</div>
     </div>
   </BaseLayout>
   );

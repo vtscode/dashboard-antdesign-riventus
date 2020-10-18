@@ -1,11 +1,19 @@
 import React from 'react';
 import { Layout,Menu } from "antd";
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import menus from "../../routes/menus";
+import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 const {SubMenu} = Menu;
-
-export default () => {
+const {Sider} = Layout;
+const SiderStyled = styled(Sider)`
+  .ant-layout-sider-trigger{
+    background-color:${props => props.color};
+    
+  }
+`
+const Sidebar = ({theme}) => {
   const [collapsed,setcollapsed] = React.useState(false);
 
   const onCollapse = collapsed => {
@@ -13,14 +21,16 @@ export default () => {
   };
 
   return(
-    <Layout.Sider
+    <SiderStyled
       collapsible 
       collapsed={collapsed} 
       onCollapse={onCollapse}
       className="site-layout-background"
+      color={theme.colorheader}
     >
       <Menu
-        mode="vertical"
+        mode={theme.mode}
+        theme={theme.theme}
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
         style={{ height: '100%', borderRight: 0 }}
@@ -38,6 +48,8 @@ export default () => {
           return <Menu.Item key={x.name} icon={x.icon}><Link to={x.url}>{x.name}</Link></Menu.Item>;
         })}
       </Menu>
-    </Layout.Sider>
+    </SiderStyled>
   );
 };
+const mapStateToProps = ({theme}) => ({theme});
+export default connect(mapStateToProps)(Sidebar);
