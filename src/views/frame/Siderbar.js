@@ -8,9 +8,13 @@ import { Link } from 'react-router-dom';
 const {SubMenu} = Menu;
 const {Sider} = Layout;
 const SiderStyled = styled(Sider)`
+
+  min-height:80vh;
+
   .ant-layout-sider-trigger{
+    position : absolute;
+    color : #555;
     background-color:${props => props.color};
-    
   }
 `
 const Sidebar = ({theme}) => {
@@ -25,7 +29,6 @@ const Sidebar = ({theme}) => {
       collapsible 
       collapsed={collapsed} 
       onCollapse={onCollapse}
-      className="site-layout-background"
       color={theme.colorheader}
     >
       <Menu

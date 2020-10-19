@@ -1,9 +1,14 @@
 import React from 'react';
 import { Layout, Button} from "antd";
-const {Footer} = Layout;
+import styled from "styled-components";
 
-export default (props) => (
-  <Footer style={{ textAlign: 'center' }}>
+const {Footer} = Layout;
+const FooterStyled = styled(Footer)`
+  text-align: center;
+`;
+
+export default () => (
+  <FooterStyled>
     Baked with <span role="img" aria-label="&#x1F49C;">&#x1F49C;</span> by <Button type="text" onClick={() => window.location.replace('https://rhivent.github.io')}>Riventus</Button>
-  </Footer>
+  </FooterStyled>
 );

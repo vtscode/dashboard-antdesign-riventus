@@ -1,7 +1,7 @@
 import constant from "../constant";
 import localStorageService from "../../services/localStorageService";
 
-const INIT_STATE = { mode : 'vertical', theme : 'light', colorheader : '#e0a453' };
+const INIT_STATE = { mode : 'vertical', theme : 'light', colorheader : 'rgb(255, 241, 184)' };
 
 export default (state = INIT_STATE, action) => {
   switch (action.type) {

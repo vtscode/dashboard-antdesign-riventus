@@ -10,37 +10,35 @@ import IsiContent from "../../components/Content";
 import localStorageService from "../../services/localStorageService";
 
 const {Content} = Layout;
-export const LayoutContext = React.createContext();
 
 const Base = (props) => {
-  const [state,setState] = React.useState({ mode : 'vertical', theme : 'light', colorheader : '#e0a453',});
-  
+  const colorBgLayout = props.theme.theme === 'light' ? 'inherit' : '#1e2020';
   if(localStorageService('auth').getAccessToken()?.user){
     props.loggedIn(localStorageService('auth').getAccessToken());
   }else{
     window.location.replace(pathName.login);
   }
   return(
-  <LayoutContext.Provider value={{state,setState}}>
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout style={{ minHeight: '100vh', backgroundColor : colorBgLayout }}>
       <Header />
-      <Layout>
-        <Sidebar />
+      <Content style={{ margin: '1rem 1rem 0 1rem' }}>
         <Layout>
-          <Content style={{ margin: '0 16px' }}>
+          <Sidebar />
+          <Content style={{ margin: '0 1rem', }}>
             <IsiContent {...props}>
               {props.children}
             </IsiContent>
+            <Footer />
           </Content>
-          <Footer />
         </Layout>
-      </Layout>
+      </Content>
     </Layout>
-  </LayoutContext.Provider>);
+  );
 };
+const mapStateToProps = ({theme}) => ({theme});
 const mapDispatchToProps = (dispatch) => {
   return {
     loggedIn: values => dispatch(setAuth(values)),
   };
 };
-export default connect(null,mapDispatchToProps)(Base);
+export default connect(mapStateToProps,mapDispatchToProps)(Base);

@@ -18,7 +18,7 @@ export default (props) => {
 
   if(breadcrumb){
     return(<>
-      <Breadcrumb style={{ margin: '16px 0' }}>
+      <Breadcrumb>
         {
           breadcrumb.map((x,idx) => {
             return(<React.Fragment key={idx}>

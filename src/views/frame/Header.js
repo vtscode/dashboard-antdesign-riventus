@@ -1,13 +1,13 @@
 import React from 'react';
-import { Avatar, Button, Dropdown, 
-  Layout, Menu } from "antd";
+import { Avatar, Button, Dropdown, Tooltip,
+  Layout, Menu, Space, Typography } from "antd";
 import { connect } from 'react-redux';
 import styled from "styled-components";
 import { noImagePath } from "../../utils";
 import pathName from "../../routes/pathName";
-import { UserOutlined } from '@ant-design/icons';
 import { clearAuth } from "../../redux/auth/action";
 import { changeTheme } from "../../redux/theme/action";
+import { UserOutlined,BulbOutlined, BulbFilled } from '@ant-design/icons';
 
 const {Header} = Layout;
 const ImageHead = styled.div`
@@ -22,19 +22,23 @@ const ImageHead = styled.div`
   background: url(${props => props.src && props.src}) no-repeat center center; 
 `;
 const AvatarStyled = styled(Avatar)`
-  float:right;
-  transform:translateY(.3em);
   background-color: #fff;
   color: darkolivegreen;
 `;
 const HeaderStyled = styled(Header)`
   background-color: ${props => props.color};
 `;
+const SpaceStyled = styled(Space)`
+  float:right;
+`;
+const WrapperMenuHeader = styled.div`
+  float:right;
+`;
 
 const menu = (props,handleLogout) => {
   const changeTheme = () => {
     const newTheme = props.theme.theme === 'light' ? 'dark' : 'light';
-    const newColor = props.theme.colorheader === '#001529' ? '#e0a453' : '#001529';
+    const newColor = props.theme.colorheader === '#001529' ? 'rgb(255, 241, 184)' : '#001529';
     props.changeTheme({theme : newTheme, colorheader : newColor});
   }
   const changeMode = () => {
@@ -43,9 +47,7 @@ const menu = (props,handleLogout) => {
   }
   
   return(
-  <Menu>
-    <Menu.Item key="1"><Button type="text">{props?.auth?.user?.user?.username?.toUpperCase()}</Button></Menu.Item>
-    <Menu.Item key="2"><Button type="text" onClick={changeTheme}>Theme : {props.theme.theme}</Button></Menu.Item>
+  <Menu style={{}}>
     <Menu.Item key="3"><Button type="text" onClick={changeMode}>Sidebar : {props.theme.mode}</Button></Menu.Item>
     <Menu.Item key="4"><Button type="text" onClick={handleLogout}>LOGOUT</Button></Menu.Item>
   </Menu>
@@ -53,6 +55,12 @@ const menu = (props,handleLogout) => {
 
 const App = (props) => {
   // const {state,setState} = React.useContext(LayoutContext);
+  const changeTheme = () => {
+    const newTheme = props.theme.theme === 'light' ? 'dark' : 'light';
+    const newColor = props.theme.colorheader === '#001529' ? 'rgb(255, 241, 184)' : '#001529';
+    props.changeTheme({theme : newTheme, colorheader : newColor});
+  }
+
   const handleLogout = () => {
     props.loggedOut();
     window.location.replace(pathName.login);
@@ -61,12 +69,27 @@ const App = (props) => {
   return(<>
     <HeaderStyled color={props.theme.colorheader}>
       <ImageHead src={noImagePath} />
-      <Dropdown overlay={() => menu(props,handleLogout)}>
-        <AvatarStyled 
-          size={50} 
-          icon={<UserOutlined />}
-        />
-      </Dropdown>
+      <WrapperMenuHeader>
+        <Tooltip title="Change theme">
+          <Button 
+            type="text" 
+            shape="circle" 
+            size="large"
+            icon={props.theme.theme === 'light' ? <BulbOutlined /> : <BulbFilled/>} 
+            onClick={changeTheme} 
+            style={props.theme.theme === 'light' ? {color : 'inherit'} : {color : '#fff'}}
+          />
+        </Tooltip>
+        <Dropdown trigger={['click']} placement="bottomRight" overlay={() => menu(props,handleLogout)}>
+          <SpaceStyled direction="horizontal">
+          <Typography.Text style={props.theme.theme === 'light' ? {color : 'inherit'} : {color : '#fff'}}>Hi, <strong>{props?.auth?.user?.user?.username}</strong></Typography.Text>
+          <AvatarStyled 
+            size={30} 
+            icon={<UserOutlined />}
+          />
+          </SpaceStyled>
+        </Dropdown>
+      </WrapperMenuHeader>
     </HeaderStyled>
   </>);
 };
