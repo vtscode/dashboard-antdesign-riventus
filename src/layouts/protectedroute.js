@@ -15,7 +15,7 @@ const ProtectedRoute = ({history}) => {
   <React.Suspense fallback={<LoadingState />}>
     <Switch>
       {routes.strict.map((route,idx) => (<Route key={idx} {...route} />))}
-      <Route render={m => <NotFound />} />
+      <Route render={m => <NotFound {...m} />} />
     </Switch>
   </React.Suspense>);
 };

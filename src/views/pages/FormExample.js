@@ -4,10 +4,10 @@ import BaseLayout from "../frame/Base";
 import pathName from "../../routes/pathName";
 import { InputForm } from "../../components";
 
-export default (props) => {
+export default () => {
   const { home } = pathName;
   const [form] = Form.useForm();
-  const [state,setState] = React.useState({})
+  const [,setState] = React.useState({})
 
   const contentProps = {
     breadcrumb : [

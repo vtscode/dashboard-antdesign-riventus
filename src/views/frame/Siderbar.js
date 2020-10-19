@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 const {SubMenu} = Menu;
 const {Sider} = Layout;
 const SiderStyled = styled(Sider)`
-
   min-height:80vh;
 
   .ant-layout-sider-trigger{
@@ -16,7 +15,12 @@ const SiderStyled = styled(Sider)`
     color : #555;
     background-color:${props => props.color};
   }
-`
+`;
+
+const MenuStyled = styled(Menu)`
+  height: 100%; 
+  border-right: 0;
+`;
 const Sidebar = ({theme}) => {
   const [collapsed,setcollapsed] = React.useState(false);
 
@@ -31,12 +35,11 @@ const Sidebar = ({theme}) => {
       onCollapse={onCollapse}
       color={theme.colorheader}
     >
-      <Menu
+      <MenuStyled
         mode={theme.mode}
         theme={theme.theme}
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
-        style={{ height: '100%', borderRight: 0 }}
       >
         {menus.items.map((x,idx) => {
           if(x.children){
@@ -50,7 +53,7 @@ const Sidebar = ({theme}) => {
           }
           return <Menu.Item key={x.name} icon={x.icon}><Link to={x.url}>{x.name}</Link></Menu.Item>;
         })}
-      </Menu>
+      </MenuStyled>
     </SiderStyled>
   );
 };

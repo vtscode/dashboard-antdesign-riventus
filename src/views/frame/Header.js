@@ -9,6 +9,11 @@ import { clearAuth } from "../../redux/auth/action";
 import { changeTheme } from "../../redux/theme/action";
 import { UserOutlined,BulbOutlined, BulbFilled } from '@ant-design/icons';
 
+const colorTheme = {
+  light : 'rgb(255, 241, 184)',
+  white : '#fff',
+  dark : '#001529'
+}
 const {Header} = Layout;
 const ImageHead = styled.div`
   width: 120px;
@@ -36,11 +41,6 @@ const WrapperMenuHeader = styled.div`
 `;
 
 const menu = (props,handleLogout) => {
-  const changeTheme = () => {
-    const newTheme = props.theme.theme === 'light' ? 'dark' : 'light';
-    const newColor = props.theme.colorheader === '#001529' ? 'rgb(255, 241, 184)' : '#001529';
-    props.changeTheme({theme : newTheme, colorheader : newColor});
-  }
   const changeMode = () => {
     const newMode = props.theme.mode === 'vertical' ? 'inline' : 'vertical';
     props.changeTheme({mode : newMode });
@@ -57,7 +57,7 @@ const App = (props) => {
   // const {state,setState} = React.useContext(LayoutContext);
   const changeTheme = () => {
     const newTheme = props.theme.theme === 'light' ? 'dark' : 'light';
-    const newColor = props.theme.colorheader === '#001529' ? 'rgb(255, 241, 184)' : '#001529';
+    const newColor = props.theme.colorheader === colorTheme.dark ? colorTheme.light : colorTheme.dark;
     props.changeTheme({theme : newTheme, colorheader : newColor});
   }
 
@@ -77,17 +77,17 @@ const App = (props) => {
             size="large"
             icon={props.theme.theme === 'light' ? <BulbOutlined /> : <BulbFilled/>} 
             onClick={changeTheme} 
-            style={props.theme.theme === 'light' ? {color : 'inherit'} : {color : '#fff'}}
+            style={props.theme.theme === 'light' ? {color : 'inherit'} : {color : colorTheme.white }}
           />
         </Tooltip>
         <Dropdown trigger={['click']} placement="bottomRight" overlay={() => menu(props,handleLogout)}>
-          <SpaceStyled direction="horizontal">
-          <Typography.Text style={props.theme.theme === 'light' ? {color : 'inherit'} : {color : '#fff'}}>Hi, <strong>{props?.auth?.user?.user?.username}</strong></Typography.Text>
+          <Space direction="horizontal" style={{float:'right'}}>
+          <Typography.Text style={props.theme.theme === 'light' ? {color : 'inherit'} : {color : colorTheme.white }}>Hi, <strong>{props?.auth?.user?.user?.username}</strong></Typography.Text>
           <AvatarStyled 
             size={30} 
             icon={<UserOutlined />}
           />
-          </SpaceStyled>
+          </Space>
         </Dropdown>
       </WrapperMenuHeader>
     </HeaderStyled>

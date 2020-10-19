@@ -2,8 +2,6 @@ import React from 'react';
 import BaseLayout from "../frame/Base";
 
 export default (props) => {
-  console.log(props);
-
   const contentProps = {
     breadcrumb : [
       { text : 'Home' },
