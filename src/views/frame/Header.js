@@ -33,9 +33,6 @@ const AvatarStyled = styled(Avatar)`
 const HeaderStyled = styled(Header)`
   background-color: ${props => props.color};
 `;
-const SpaceStyled = styled(Space)`
-  float:right;
-`;
 const WrapperMenuHeader = styled.div`
   float:right;
 `;

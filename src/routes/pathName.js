@@ -8,6 +8,7 @@ export default {
   pages: {
     page1 : '/page1',
     forms : '/forms',
+    pdfexample : '/pdfexample'
   },
 
   endpoint : {

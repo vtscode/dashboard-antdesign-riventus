@@ -19,10 +19,67 @@ export default () => {
   };
 
   const inputs = [
-    { propsFormItem : { 
-      name : 'identifier', rules: [{required : true, message : 'Username harus diisi'}] }, propsInput : { placeholder : 'Username', autoFocus: true} },
-    { type : 'password', propsFormItem : { 
-      name : 'password', rules: [{required : true, message : 'Password harus diisi'}] }, propsInput : { placeholder : 'Password'} },
+    { type : 'row', 
+      cols : [
+        { propsFormItem : { 
+          label : 'Username',
+          name : 'identifier', rules: [{required : true, message : 'Username harus diisi'}] }, propsInput : { placeholder : 'Username', autoFocus: true }, propsCol : { span: 23, md: 12, lg: 10 } 
+        },
+        { type : 'password', propsFormItem : { 
+          label : 'Password',
+          name : 'password', rules: [{required : true, message : 'Password harus diisi'}] }, propsInput : { placeholder : 'Password'} },
+        { type : 'number', propsFormItem : { 
+          label : 'Password',
+          name : 'data_number', rules: [{required : true, message : 'pujipassword harus diisi'}] }, propsInput : { placeholder : 'Password'} },
+        
+      ],
+    },
+    { type : 'row',
+      cols : [
+        { type : 'select',
+          propsFormItem : { 
+            label : 'Data Select',
+            name : 'data_select', rules: [{required : true, message : 'Pilih data'}] }, propsInput : { placeholder : 'Pilih Data' },
+            propsCol : { span: 20, md: 8, lg: 8 } 
+        },
+        { type : 'select',
+          propsFormItem : { 
+            label : 'Data Select',
+            name : 'data_select', rules: [{required : true, message : 'Pilih data'}] }, propsInput : { placeholder : 'Pilih Data' },
+            propsCol : { span: 20, md: 8, lg: 8 } 
+        },
+        { type : 'select',
+          propsFormItem : { 
+            label : 'Data Select',
+            name : 'data_select', rules: [{required : true, message : 'Pilih data'}] }, propsInput : { placeholder : 'Pilih Data' },
+            propsCol : { span: 20, md: 8, lg: 8 } 
+        },
+      ]
+    },
+    { type : 'textarea',
+      propsFormItem : { 
+        label : 'Keterangan',
+        name : 'data_keterangan', rules: [{required : true, message : 'Tulis keterangan'}] }, propsInput : { placeholder : 'Tulis keterangan' } 
+    },
+    { type : 'row',
+      cols : [
+        {
+          type : 'switch',
+          propsFormItem : { 
+            label : 'On/Off',
+            name : 'data_on_off', rules: [{required : true, message : 'Switch to aktif'}] }, propsInput : { placeholder : 'Pilih Switch' },
+            propsCol : { span: 2, md: 2, lg: 2 }  
+        },
+        {
+          type : 'checkbox',
+          propsFormItem : { 
+            label : 'Agree/Not',
+            name : 'data_agree_not', rules: [{required : true, message : 'Agree button'}] }, propsInput : { placeholder : 'Check data' },
+            propsCol : { span: 2, md: 2, lg: 2 } 
+        }
+      ]
+    },
+    
     { type : 'button', text : 'Login', propsBtn : { ...process, type: 'primary', htmlType : 'submit', block:true,} },
   ];
 
@@ -38,6 +95,7 @@ export default () => {
   return(
     <BaseLayout {...contentProps}>
       <Form form={form} 
+        layout="horizontal"
         onFinish={handleSubmit} 
         initialValues={{identifier: 'riventus',password : 'qweqwe123'}}
       >

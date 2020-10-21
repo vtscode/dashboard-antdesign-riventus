@@ -1,5 +1,5 @@
 import React from 'react';
-import { Breadcrumb, PageHeader, Button} from "antd";
+import { Breadcrumb, PageHeader, Typography } from "antd";
 import { Link } from "react-router-dom";
 
 const Container = ({children,title,subtitle,extra}) => (<PageHeader
@@ -18,7 +18,7 @@ export default (props) => {
 
   if(breadcrumb){
     return(<>
-      <Breadcrumb>
+      <Breadcrumb style={{ margin: '.5em 0 0 1rem'}}>
         {
           breadcrumb.map((x,idx) => {
             return(<React.Fragment key={idx}>
@@ -26,7 +26,7 @@ export default (props) => {
                 {x.link ? 
                   <Link to={x.link}>{x.text}</Link>
                   :
-                  <Button type="text" >{x.text}</Button>
+                  <Typography.Text>{x.text}</Typography.Text>
                 }
               </Breadcrumb.Item>
             </React.Fragment>)

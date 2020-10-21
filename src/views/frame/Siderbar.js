@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const {SubMenu} = Menu;
 const {Sider} = Layout;
 const SiderStyled = styled(Sider)`
-  min-height:80vh;
+  min-height:90vh;
 
   .ant-layout-sider-trigger{
     position : absolute;

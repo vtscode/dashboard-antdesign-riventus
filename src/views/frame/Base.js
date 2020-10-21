@@ -4,12 +4,24 @@ import Header from './Header';
 import Footer from './Footer';
 import Sidebar from './Siderbar';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import pathName from "../../routes/pathName";
 import {setAuth} from "../../redux/auth/action";
 import IsiContent from "../../components/Content";
 import localStorageService from "../../services/localStorageService";
 
 const {Content} = Layout;
+const WrapperLayout = styled(Layout)`
+  min-height: 100vh;
+  background-color : ${props => props.colorBgLayout}
+`;
+const ContentStyled = styled(Content)`
+  margin: 1rem 1rem 0 1rem;
+`;
+const LayoutStyled = styled(Layout)`
+  box-shadow:#d971275e 0 1rem 2.5rem 0;
+  border-radius : 1rem;
+`;
 
 const Base = (props) => {
   const colorBgLayout = props.theme.theme === 'light' ? 'inherit' : '#1e2020';
@@ -19,20 +31,20 @@ const Base = (props) => {
     window.location.replace(pathName.login);
   }
   return(
-    <Layout style={{ minHeight: '100vh', backgroundColor : colorBgLayout }}>
+    <WrapperLayout colorBgLayout={colorBgLayout}>
       <Header />
-      <Content style={{ margin: '1rem 1rem 0 1rem' }}>
-        <Layout>
+      <ContentStyled>
+        <LayoutStyled>
           <Sidebar />
-          <Content style={{ margin: '0 1rem', }}>
+          <Content style={{ margin: '0 1rem'}}>
             <IsiContent {...props}>
               {props.children}
             </IsiContent>
             <Footer />
           </Content>
-        </Layout>
-      </Content>
-    </Layout>
+        </LayoutStyled>
+      </ContentStyled>
+    </WrapperLayout>
   );
 };
 const mapStateToProps = ({theme}) => ({theme});

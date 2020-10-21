@@ -11,5 +11,6 @@ export default {
     { path: home, exact : true, component: React.lazy(() => import('../views/pages/Home')) },
     { path: pages.page1, exact : true, component: React.lazy(() => import('../views/pages/Pages')) },
     { path: pages.forms, exact : true, component: React.lazy(() => import('../views/pages/FormExample')) },
+    { path: pages.pdfexample, exact : true, component: React.lazy(() => import('../views/pages/GeneratePDF')) },
   ]
 };

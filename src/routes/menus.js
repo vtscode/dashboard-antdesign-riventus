@@ -20,5 +20,6 @@ export default {
       ]
     },
     { name: 'Forms', url: pages.forms, icon: <FormOutlined/> },
+    { name: 'PDF Example', url: pages.pdfexample, icon: <FormOutlined/> },
   ]
 }
