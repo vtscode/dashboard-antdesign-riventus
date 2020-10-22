@@ -29,8 +29,8 @@ export default () => {
           label : 'Password',
           name : 'password', rules: [{required : true, message : 'Password harus diisi'}] }, propsInput : { placeholder : 'Password'} },
         { type : 'number', propsFormItem : { 
-          label : 'Password',
-          name : 'data_number', rules: [{required : true, message : 'pujipassword harus diisi'}] }, propsInput : { placeholder : 'Password'} },
+          label : 'Your ID Card',
+          name : 'data_number', rules: [{required : true, message : 'ID card harus diisi'}] }, propsInput : { placeholder : 'ID Card Number'} },
         
       ],
     },
@@ -38,20 +38,20 @@ export default () => {
       cols : [
         { type : 'select',
           propsFormItem : { 
-            label : 'Data Select',
-            name : 'data_select', rules: [{required : true, message : 'Pilih data'}] }, propsInput : { placeholder : 'Pilih Data' },
+            label : 'Province',
+            name : 'province', rules: [{required : true, message : 'Pilih data'}] }, propsInput : { placeholder : 'Pilih Data' },
             propsCol : { span: 20, md: 8, lg: 8 } 
         },
         { type : 'select',
           propsFormItem : { 
-            label : 'Data Select',
-            name : 'data_select', rules: [{required : true, message : 'Pilih data'}] }, propsInput : { placeholder : 'Pilih Data' },
+            label : 'District',
+            name : 'district', rules: [{required : true, message : 'Pilih data'}] }, propsInput : { placeholder : 'Pilih Data' },
             propsCol : { span: 20, md: 8, lg: 8 } 
         },
         { type : 'select',
           propsFormItem : { 
-            label : 'Data Select',
-            name : 'data_select', rules: [{required : true, message : 'Pilih data'}] }, propsInput : { placeholder : 'Pilih Data' },
+            label : 'City',
+            name : 'city', rules: [{required : true, message : 'Pilih data'}] }, propsInput : { placeholder : 'Pilih Data' },
             propsCol : { span: 20, md: 8, lg: 8 } 
         },
       ]
@@ -73,9 +73,9 @@ export default () => {
         {
           type : 'checkbox',
           propsFormItem : { 
-            label : 'Agree/Not',
+            label : 'Terms and Agreement',
             name : 'data_agree_not', rules: [{required : true, message : 'Agree button'}] }, propsInput : { placeholder : 'Check data' },
-            propsCol : { span: 2, md: 2, lg: 2 } 
+            propsCol : { span: 6, md: 6, lg: 6 } 
         }
       ]
     },

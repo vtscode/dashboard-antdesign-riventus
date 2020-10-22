@@ -50,12 +50,12 @@ const DocDownload = () => {
 
   return(
   <BaseLayout {...contentProps}>
-    <PDFViewer style={{height:'100vh', width:'80vw'}}>
-      <MyDocument />
-    </PDFViewer>
     <div>
       <DocDownload />
     </div>
+    <PDFViewer style={{height:'100vh', width:'80vw'}}>
+      <MyDocument />
+    </PDFViewer>
   </BaseLayout>
   );
 }
