@@ -1,6 +1,6 @@
 import React from 'react';
 import BaseLayout from "../frame/Base";
-import pathName from "../../routes/pathName";
+import pathName from "routes/pathName";
 
 export default (props) => {
   const { home } = pathName;

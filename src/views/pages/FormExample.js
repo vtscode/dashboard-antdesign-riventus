@@ -1,8 +1,8 @@
 import React from 'react';
 import { Form } from "antd";
 import BaseLayout from "../frame/Base";
-import pathName from "../../routes/pathName";
-import { InputForm } from "../../components";
+import pathName from "routes/pathName";
+import { InputForm } from "components";
 
 export default () => {
   const { home } = pathName;

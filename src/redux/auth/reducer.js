@@ -1,5 +1,5 @@
 import constant from "../constant";
-import localStorageService from "../../services/localStorageService";
+import localStorageService from "services/localStorageService";
 
 const { auth } = constant;
 const INIT_STATE = { user: null };

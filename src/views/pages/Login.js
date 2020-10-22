@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { noImagePath } from "../../utils";
-import network from "../../services/network";
-import pathName from "../../routes/pathName";
+import { noImagePath } from "utils";
+import network from "services/network";
+import pathName from "routes/pathName";
+import { setAuth } from "redux/auth/action";
+import InputForm from "components/InputForm";
 import { Layout,Form,Card, Image } from "antd";
-import { setAuth } from "../../redux/auth/action";
-import InputForm from "../../components/InputForm";
-import localStorageService from "../../services/localStorageService";
+import localStorageService from "services/localStorageService";
 
 const adminUserName = ['riventus'];
 const Login = (props) => {

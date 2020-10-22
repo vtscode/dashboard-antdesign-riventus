@@ -1,10 +1,10 @@
 import React from 'react';
-import routes from "../routes";
-import pathName from "../routes/pathName";
-import NotFound from "../views/pages/NotFound";
+import routes from "routes";
+import pathName from "routes/pathName";
+import NotFound from "views/pages/NotFound";
 import { Route,Switch } from 'react-router-dom';
-import {LoadingState} from "../components/loading";
-import localStorageService from "../services/localStorageService";
+import {LoadingState} from "components/loading";
+import localStorageService from "services/localStorageService";
 
 const ProtectedRoute = ({history}) => {
   const { login} = pathName;

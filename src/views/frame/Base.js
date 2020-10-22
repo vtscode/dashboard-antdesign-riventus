@@ -5,10 +5,10 @@ import Footer from './Footer';
 import Sidebar from './Siderbar';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import pathName from "../../routes/pathName";
-import {setAuth} from "../../redux/auth/action";
-import IsiContent from "../../components/Content";
-import localStorageService from "../../services/localStorageService";
+import pathName from "routes/pathName";
+import {setAuth} from "redux/auth/action";
+import IsiContent from "components/Content";
+import localStorageService from "services/localStorageService";
 
 const {Content} = Layout;
 const WrapperLayout = styled(Layout)`

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Avatar, Button, Dropdown, Tooltip,
-  Layout, Menu, Space, Typography } from "antd";
+Layout, Menu, Space, Typography } from "antd";
+import { noImagePath } from "utils";
 import { connect } from 'react-redux';
 import styled from "styled-components";
-import { noImagePath } from "../../utils";
-import pathName from "../../routes/pathName";
-import { clearAuth } from "../../redux/auth/action";
-import { changeTheme } from "../../redux/theme/action";
+import pathName from "routes/pathName";
+import { clearAuth } from "redux/auth/action";
+import { changeTheme } from "redux/theme/action";
 import { UserOutlined,BulbOutlined, BulbFilled } from '@ant-design/icons';
 
 const colorTheme = {
@@ -18,13 +18,17 @@ const {Header} = Layout;
 const ImageHead = styled.div`
   width: 120px;
   height: 31px;
-  margin: 16px 28px 16px 0;
+  margin: 1rem 28px 1rem 0;
   float: left;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background: url(${props => props.src && props.src}) no-repeat center center; 
+  background: url(${props => props.src && props.src}) no-repeat center center;
+
+  @media screen and (max-width: 400px) {
+    margin: 1rem 0 0 0;
+  }
 `;
 const AvatarStyled = styled(Avatar)`
   background-color: #fff;
@@ -32,6 +36,9 @@ const AvatarStyled = styled(Avatar)`
 `;
 const HeaderStyled = styled(Header)`
   background-color: ${props => props.color};
+  @media screen and (max-width: 400px) {
+    padding: 0 1rem 0 0;
+  }
 `;
 const WrapperMenuHeader = styled.div`
   float:right;

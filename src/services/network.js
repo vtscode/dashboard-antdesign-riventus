@@ -1,4 +1,4 @@
-import { initURL } from "../utils";
+import { initURL } from "utils";
 import interceptor from './interceptors';
 
 export const headers = {

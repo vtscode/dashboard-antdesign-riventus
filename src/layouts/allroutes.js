@@ -1,8 +1,8 @@
 import React from "react";
-import routes from "../routes";
-import pathName from "../routes/pathName";
+import routes from "routes";
+import pathName from "routes/pathName";
 import ProtectedRoute from './protectedroute';
-import {LoadingState} from '../components/loading';
+import {LoadingState} from 'components/loading';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 const App = () => {

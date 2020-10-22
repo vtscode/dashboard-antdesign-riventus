@@ -1,7 +1,9 @@
 import React from 'react';
+import { PDFViewer,PDFDownloadLink, Page,
+  Document, Text, View, StyleSheet 
+} from '@react-pdf/renderer';
 import BaseLayout from "../frame/Base";
-import pathName from "../../routes/pathName";
-import { PDFViewer,PDFDownloadLink,Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import pathName from "routes/pathName";
 
 export default () => {
   const contentProps = {

@@ -1,5 +1,5 @@
 import constant from "../constant";
-import localStorageService from "../../services/localStorageService";
+import localStorageService from "services/localStorageService";
 
 const INIT_STATE = { mode : 'vertical', theme : 'light', colorheader : 'rgb(255, 241, 184)' };
 

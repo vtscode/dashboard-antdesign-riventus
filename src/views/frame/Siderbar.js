@@ -1,14 +1,14 @@
 import React from 'react';
+import menus from "routes/menus";
 import { Layout,Menu } from "antd";
 import { connect } from 'react-redux';
-import menus from "../../routes/menus";
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
 const {SubMenu} = Menu;
 const {Sider} = Layout;
 const SiderStyled = styled(Sider)`
-  min-height:90vh;
+  min-height:88vh;
 
   .ant-layout-sider-trigger{
     position : absolute;
@@ -22,7 +22,7 @@ const MenuStyled = styled(Menu)`
   border-right: 0;
 `;
 const Sidebar = ({theme}) => {
-  const [collapsed,setcollapsed] = React.useState(false);
+  const [collapsed,setcollapsed] = React.useState(true);
 
   const onCollapse = collapsed => {
     setcollapsed(collapsed);
