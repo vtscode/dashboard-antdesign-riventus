@@ -10,5 +10,23 @@ const formDateInputValue = (tgl = new Date(), format ='') => moment(tgl, format 
 const formDateDisplayValue = (tgl = new Date(), format ='') => moment(tgl).format(format ? format : formatDateInput()); // output : 2020-11-30
 // convert number
 const numberFormat = (params,type ='') => type === 'uang' ? `Rp${new Intl.NumberFormat('id-ID', {}).format(params)},00` : new Intl.NumberFormat('id-ID', {}).format(params);
-
-export { initURL, initialEndpoint, defaultPathDomain, formatDateInput, formDateInputValue,formDateDisplayValue, numberFormat,noImagePath };
+const roundedNumber = (number, decimalPlaces = 2) => Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces);
+const colorGenerator = (num = 5) => {
+  let colors = [];
+  for (let index = 0; index < num; index++) {
+    colors.push("#"+(Math.random()*0xFFFFFF<<0).toString(16)); 
+  }
+  return colors;
+};
+const titleNameByPathUrl = (path) => {
+  if(path){
+    return path.substring(1,path.length).split('-').map(x => (x.charAt(0).toUpperCase() + x.substring(1,x.length) )).join(' ');
+  }
+}
+export { initURL, initialEndpoint, defaultPathDomain, 
+  formatDateInput, 
+  formDateInputValue,
+  formDateDisplayValue, 
+  numberFormat,noImagePath,roundedNumber,
+  colorGenerator, titleNameByPathUrl
+};

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { Layout} from "antd";
 import Header from './Header';
@@ -13,7 +14,7 @@ import localStorageService from "services/localStorageService";
 const {Content} = Layout;
 const WrapperLayout = styled(Layout)`
   min-height: 100vh;
-  background-color : ${props => props.colorBgLayout}
+  background-color : ${props => props.colorbglayout}
 `;
 const ContentStyled = styled(Content)`
   margin: 1rem 1rem 0 1rem;
@@ -25,13 +26,16 @@ const LayoutStyled = styled(Layout)`
 
 const Base = (props) => {
   const colorBgLayout = props.theme.theme === 'light' ? 'inherit' : '#1e2020';
-  if(localStorageService('auth').getAccessToken()?.user){
-    props.loggedIn(localStorageService('auth').getAccessToken());
-  }else{
-    window.location.replace(pathName.login);
-  }
+
+  React.useEffect(() => {
+    if(localStorageService('auth').getAccessToken()?.user){
+      props.loggedIn(localStorageService('auth').getAccessToken());
+    }else{
+      window.location.replace(pathName.login);
+    }
+  },[localStorageService('auth').getAccessToken()?.user])
   return(
-    <WrapperLayout colorBgLayout={colorBgLayout}>
+    <WrapperLayout colorbglayout={colorBgLayout}>
       <Header />
       <ContentStyled>
         <LayoutStyled>

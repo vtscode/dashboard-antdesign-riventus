@@ -12,5 +12,8 @@ export default {
     { path: pages.page1, exact : true, component: React.lazy(() => import('../views/pages/Pages')) },
     { path: pages.forms, exact : true, component: React.lazy(() => import('../views/pages/FormExample')) },
     { path: pages.pdfexample, exact : true, component: React.lazy(() => import('../views/pages/GeneratePDF')) },
+    { path: pages.onlinesalestracker, exact : true, component: React.lazy(() => import('../views/pages/OnlineSalesTracking')) },
+    { path: pages.websitebudgettool, exact : true, component: React.lazy(() => import('../views/pages/WebsiteBudgetTool')) },
+    { path: pages.eventbudget, exact : true, component: React.lazy(() => import('../views/pages/EventBudget')) },
   ]
 };

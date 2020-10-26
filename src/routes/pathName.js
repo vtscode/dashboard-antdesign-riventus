@@ -8,7 +8,10 @@ export default {
   pages: {
     page1 : '/page1',
     forms : '/forms',
-    pdfexample : '/pdfexample'
+    pdfexample : '/pdfexample',
+    onlinesalestracker : '/online-sales-tracker',
+    websitebudgettool : '/website-budget-tool',
+    eventbudget : '/event-budget',
   },
 
   endpoint : {

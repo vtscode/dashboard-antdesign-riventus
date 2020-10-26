@@ -1,8 +1,8 @@
 import React from 'react';
 import { UserOutlined, 
-  LaptopOutlined, 
+  LaptopOutlined,WindowsOutlined,
   NotificationOutlined,
-  FormOutlined
+  FormOutlined,SnippetsOutlined
 } from '@ant-design/icons';
 import pathName from "./pathName";
 
@@ -13,13 +13,23 @@ export default {
     { name: 'Home', url: home, icon: <UserOutlined/> },
     {
       name: 'Pages',
+      icon: <WindowsOutlined />,
+      url: pages.page1,
+      children: [
+        { name: 'Online Sales Tracking', url: pages.onlinesalestracker, icon: <SnippetsOutlined /> },
+        { name: 'Website Budget Tool', url: pages.websitebudgettool, icon: <LaptopOutlined /> },
+        { name: 'Event Budget', url: pages.eventbudget, icon: <SnippetsOutlined /> },
+      ]
+    },
+    { name: 'Forms', url: pages.forms, icon: <FormOutlined/> },
+    { name: 'PDF Example', url: pages.pdfexample, icon: <FormOutlined/> },
+    {
+      name: 'Pages',
       icon: <NotificationOutlined />,
       url: pages.page1,
       children: [
         { name: 'Page 1', url: pages.page1, icon: <LaptopOutlined /> },
       ]
     },
-    { name: 'Forms', url: pages.forms, icon: <FormOutlined/> },
-    { name: 'PDF Example', url: pages.pdfexample, icon: <FormOutlined/> },
   ]
 }
