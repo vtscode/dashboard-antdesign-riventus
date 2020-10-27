@@ -5,6 +5,7 @@ import styled from "styled-components";
 const {Footer} = Layout;
 const FooterStyled = styled(Footer)`
   text-align: center;
+  padding:unset;
 `;
 
 export default () => (

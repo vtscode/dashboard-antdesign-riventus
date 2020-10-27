@@ -85,7 +85,7 @@ export default (props) => {
       return(<>
         <Table.Summary.Row style={styleCtm.textAlign}>
           <Table.Summary.Cell colSpan={1}>
-            <Typography.Text strong>Total Initial Investment($)</Typography.Text>
+            <Typography.Title level={5}>Total ($)</Typography.Title>
           </Table.Summary.Cell>
           <Table.Summary.Cell>
             <Typography.Text>{numberFormat(totalRecordYear1)}</Typography.Text>
