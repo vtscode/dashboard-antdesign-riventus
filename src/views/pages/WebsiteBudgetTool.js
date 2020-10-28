@@ -173,17 +173,17 @@ export default (props) => {
           <Typography.Title level={5}>{formDateDisplayValue(new Date(),'DD MMMM YYYY')}</Typography.Title>
         </center>
         <Row gutter={16}>
-          <Col>
+          <Col xs={24} md={12} lg={10} xl={10}>
             <Card title="Company Data">
-              <Space direction="horizontal">
+              <Space direction="horizontal" style={{display:'flex',justifyContent:'space-evenly'}}>
                 <Statistic title="Required rate return" value={`${dataReducer?.ror}%`} />
                 <Statistic title="Tax Rate" value={`${dataReducer?.tax}%`} />
               </Space>
             </Card>
           </Col>
-          <Col>
+          <Col xs={24} md={12} lg={14} xl={14}>
             <Card title="Evaluation Metrics">
-              <Space direction="horizontal">
+              <Space direction="horizontal" style={{display:'flex',justifyContent:'space-evenly'}}>
                 <Statistic title="Net present value (NPV)" value={`$${dataReducer?.npv}`} />
                 <Statistic title="Internal rate of return (IRR)" value={`${dataReducer?.irr}%`} />
                 <Statistic title="Payback period (in years)" value={`${dataReducer?.payback}`} />
