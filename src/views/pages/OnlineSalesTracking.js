@@ -1,63 +1,56 @@
 /* eslint-disable */
 import React from 'react';
-import Highcharts from 'highcharts';
+import 'echarts-gl';
 import BaseLayout from "../frame/Base";
 import pathName from "routes/pathName";
-import { Row,Col,Table } from "antd";
-import { colorGenerator } from "utils";
+import { titleNameByPathUrl } from "utils";
+import ReactEcharts from 'echarts-for-react';
+import { Row,Col,Table, Typography } from "antd";
 import { OnlineSalesTracking } from "../sampleData";
-import { HighchartsChart, Chart, withHighcharts, XAxis, YAxis,
-Title, Legend, ColumnSeries, SplineSeries, PieSeries } from 'react-jsx-highcharts';
+
 const App = (props) => {
   const { home } = pathName;
-  console.log(props);
-
   const contentProps = {
     breadcrumb : [
       { text : 'Home', link : home },
-      { text : 'Online Sales Tracking' },
+      { text : titleNameByPathUrl(props.location.pathname) },
     ],
-    title : 'Online Sales Tracking',
-    subtitle : 'Keeps you up to speed by tracking metrics of your business such as sales and profits. This dashboard provides a very simplistic view of your business and yet it is very powerful.',
-  }
-  console.log(colorGenerator());
+    title : titleNameByPathUrl(props.location.pathname),
+  };
 
   return(
     <BaseLayout {...contentProps}>
+      <Typography.Text>Keeps you up to speed by tracking metrics of your business such as sales and profits. This dashboard provides a very simplistic view of your business and yet it is very powerful.</Typography.Text>
+      <br />
       <Row>
         <Col xs={24} md={12} lg={12} xl={12}>
-          <HighchartsChart>
-            <Chart />
-            <Title>Product Profit per Product</Title>
-            <Legend />
-            <XAxis categories={['Product 1', 'Product 2', 'Product 3', 'Product 4', 'Product 5']} />
-            <YAxis labels={{format: '${value}.00'}} colors={colorGenerator()}>
-              {OnlineSalesTracking.barData.map((column,idx) => <ColumnSeries key={idx} name={column.name} data={column.data}/>)}
-              {/* <SplineSeries name="Average" data={[3, 2.67, 3, 6.33, 3.33]} /> */}
-              {/* <PieSeries name="Total consumption" data={OnlineSalesTracking.pieData} center={[100, 0]} size={100} showInLegend={false} /> */}
-            </YAxis>
-          </HighchartsChart>
+          <ReactEcharts
+            option={OnlineSalesTracking().barData}
+            notMerge={true}
+            lazyUpdate={true}
+            theme={"theme_name"}
+            onChartReady={(e) => console.log(e)}
+            opts={{}} 
+          />
         </Col>
         <Col xs={24} md={24} lg={12} xl={12}>
-          <HighchartsChart>
-            <Chart />
-            <Title>% Income per Product</Title>
-            <Legend />
-            <PieSeries 
-              name="Income per Product"
-              data={OnlineSalesTracking.pieData} 
-              center={[200, 100]} 
-              size={100} showInLegend
-            />
-            </HighchartsChart>
+          <ReactEcharts
+            option={OnlineSalesTracking().pieData}
+            notMerge={true}
+            lazyUpdate={true}
+            theme={"theme_name"}
+            onChartReady={(e) => console.log(e)}
+            opts={{}} 
+          />
         </Col>
         <Col span={24}>
         <Table
+          rowKey={row => row.id}
           pagination={{
             hideOnSinglePage : true,
           }}
-          dataSource={OnlineSalesTracking.tableData}
-          columns={OnlineSalesTracking.columnTable}
+          dataSource={OnlineSalesTracking().tableData}
+          columns={OnlineSalesTracking().columnTable}
         />
         </Col>
       </Row>
@@ -65,4 +58,4 @@ const App = (props) => {
   )
 }
 
-export default withHighcharts(App, Highcharts);
+export default App;

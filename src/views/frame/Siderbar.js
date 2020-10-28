@@ -48,7 +48,7 @@ const Sidebar = ({theme}) => {
       breakpoint="lg"
       collapsedWidth="0"
       onBreakpoint={broken => {
-        console.log(broken);
+        // console.log(broken);
       }}
     >
       <MenuStyled
