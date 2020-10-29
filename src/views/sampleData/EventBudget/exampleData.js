@@ -1,5 +1,5 @@
 import { randomString } from 'utils/generate';
-export default {
+const data = {
   expense : [
     {
       id : randomString(7),
@@ -354,3 +354,218 @@ export default {
     actual : 14910
   }
 };
+const dataSummary = [
+  {
+    name : 'Expense',
+    value : Math.abs(data.totalExpenses.actual - data.totalExpenses.estimated),
+  },
+  {
+    name : 'Income',
+    value : Math.abs(data.totalIncome.actual - data.totalIncome.estimated),
+  },
+];
+
+const optChartPie = {
+  title: {
+    text: 'Actual Cost Breakdown',
+    left: 'center',
+    textStyle: {
+      color: '#262626'
+    }
+  },
+  toolbox: {
+    feature: {
+      dataView: {
+        show: true, 
+        readOnly: false,
+        title : 'Data View'
+      },
+      saveAsImage: {
+        show: true,
+        title : 'Download Chart'
+      }
+    }
+  },
+  legend: {
+    show : true,
+    bottom : 0,
+  },
+  tooltip: {
+    trigger: 'item',
+    formatter: '{a} <br/>{b} : {c} ({d}%)'
+  },
+
+  visualMap: {
+    show: true,
+    min: 80,
+    max: 600,
+    inRange: {
+      colorLightness: [0, 0.5]
+    }
+  },
+  series: [
+      {
+        name: 'Actual Cost Breakdown',
+        type: 'pie',
+        center: ['50%', '50%'],
+        data: data.expense.map(x => ({value : x.totalActual, name : x.name})).sort((a, b) => a.value - b.value),
+        roseType: 'radius',
+        label: {
+          color: '#262626'
+        },
+        labelLine: {
+            lineStyle: {
+              color: '#262626'
+            },
+            smooth: 0.2,
+            length: 10,
+            length2: 20
+        },
+        itemStyle: {
+          color: '#abd9e9',
+          shadowBlur: 200,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        },
+
+        animationType: 'scale',
+        animationEasing: 'elasticOut',
+        animationDelay: function (idx) {
+          return Math.random() * 200;
+        }
+      }
+  ]
+};
+const summaryChart = {
+  ...optChartPie,
+  title : {
+    ...optChartPie.title,
+    text : 'Summary'
+  },
+  visualMap : {show:false},
+  series : {
+    data : dataSummary.sort((a,b) => a.value - b.value),
+    name: 'Summary Cost Breakdown',
+    type: 'pie',
+    label: {
+      color: '#262626'
+    },
+    labelLine: {
+        lineStyle: {
+          color: '#262626'
+        },
+        smooth: 0.2,
+        length: 10,
+        length2: 20
+    },
+    itemStyle: {
+      color: '#abd9e9',
+      shadowBlur: 200,
+      shadowColor: 'rgba(0, 0, 0, 0.5)'
+    },
+    animationType: 'scale',
+    animationEasing: 'elasticOut',
+    animationDelay: function (idx) {
+      return Math.random() * 200;
+    }
+  },
+}
+const optChartBar = (params = '') => ({
+  title: {
+    text: `Estimated vs Actual ${params ? 'Income' : 'Expense'}`,
+    left: 'center',
+    top: 20,
+    textStyle: {
+      color: '#262626'
+    }
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      crossStyle: {
+        color: '#999'
+      }
+    }
+  },
+  toolbox: {
+    feature: {
+      dataView: {
+        show: true, 
+        readOnly: false,
+        title : 'Data View'
+      },
+      magicType: {
+        show: true, 
+        title : {
+          line : 'Line',
+          bar: 'Bar'
+        },
+        type: ['line', 'bar']
+      },
+      restore: {
+        show: true,
+        title : 'Restore'
+      },
+      saveAsImage: {
+        show: true,
+        title : 'Download Chart'
+      }
+    }
+  },
+  legend: {
+    show : true,
+    bottom : -7
+  },
+  xAxis: [
+    {
+      show : true,
+      type: 'category',
+      data: params ? data.income.map(x => x.name) : data.expense.map(x => x.name),
+      axisPointer: {
+        type: 'shadow'
+      },
+      axisLabel: {
+        interval: 0,
+        rotate: 30
+      },
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      name: 'Value',
+      axisLabel: {
+        formatter: '${value}.00'
+      }
+    },
+    {
+      type: 'value',
+      name: 'Rerata',
+      axisLabel: {
+        formatter: '${value}.00'
+      },
+    }
+  ],
+  series: [
+    {
+      name: 'Estimated',
+      type: 'bar',
+      data: params ? data.income.map(x => x.totalEstimated) : data.expense.map(x => (x.totalEstimated))
+    },
+    {
+      name: 'Actual',
+      type: 'bar',
+      data:  params ? data.income.map(x => x.totalActual) : data.expense.map(x => (x.totalActual))
+    },
+    {
+      name: 'Rerata',
+      type: 'line',
+      yAxisIndex: 1,
+      smooth: true,
+      areaStyle: {},
+      data: params ? data.income.map(x => ((x.totalActual+x.totalEstimated)/2)) :  data.expense.map(x => ((x.totalActual+x.totalEstimated)/2))
+    }
+  ]
+});
+
+export { data,optChartPie,optChartBar,summaryChart };

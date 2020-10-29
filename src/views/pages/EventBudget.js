@@ -2,9 +2,10 @@ import React from 'react';
 import BaseLayout from "../frame/Base";
 import pathName from "routes/pathName";
 import { titleNameByPathUrl } from "utils";
+import ReactEcharts from 'echarts-for-react';
 import useCustomReducer from "hooks/useCustomReducer";
 import { Card,Typography,Row,Col,Space,Statistic } from 'antd';
-import { TableData,ExampleData } from "../sampleData/EventBudget";
+import { TableData,ExampleData,optChartPie,optChartBar,summaryChart } from "../sampleData/EventBudget";
 
 export const DataContext = React.createContext({});
 const initialData = {
@@ -31,7 +32,51 @@ export default (props) => {
   return(
     <BaseLayout {...contentProps}>
       <DataContext.Provider value={{dataReducer,reducerFunc}}>
-        <Typography.Title level={3}>EVENT NAME</Typography.Title>
+        <center><Typography.Title level={3}>EVENT NAME</Typography.Title></center>
+        <Row>
+          <Col xs={24} md={12} lg={12} xl={12}>
+            <ReactEcharts
+              option={optChartBar('income')}
+              notMerge={true}
+              lazyUpdate={true}
+              theme={"theme_name"}
+              onChartReady={(e) => console.log(e)}
+              opts={{}} 
+            />
+          </Col>
+          <Col xs={24} md={12} lg={12} xl={12}>
+            <ReactEcharts
+              option={summaryChart}
+              notMerge={true}
+              lazyUpdate={true}
+              theme={"theme_name"}
+              onChartReady={(e) => console.log(e)}
+              opts={{}} 
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={24} md={12} lg={12} xl={12}>
+            <ReactEcharts
+              option={optChartPie}
+              notMerge={true}
+              lazyUpdate={true}
+              theme={"theme_name"}
+              onChartReady={(e) => console.log(e)}
+              opts={{}} 
+            />
+          </Col>
+          <Col xs={24} md={12} lg={12} xl={12}>
+            <ReactEcharts
+              option={optChartBar()}
+              notMerge={true}
+              lazyUpdate={true}
+              theme={"theme_name"}
+              onChartReady={(e) => console.log(e)}
+              opts={{}} 
+            />
+          </Col>
+        </Row>
         <Row gutter={16}>
           <Col xs={24} md={12} lg={8} xl={8}>
             <Card title="Expense">
