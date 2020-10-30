@@ -4,7 +4,7 @@ const LocalStorageService = (keyItem) => {
   };
 
   const _getAccessToken = () => {
-    return JSON.parse(localStorage.getItem(keyItem)) || {};
+    return JSON.parse(localStorage.getItem(keyItem)) || null;
   };
 
   const _clearToken = () => {

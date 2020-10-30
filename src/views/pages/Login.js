@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
 import { noImagePath } from "utils";
@@ -28,7 +29,13 @@ const Login = (props) => {
       const resp = await network.post(loginpath,values);
       if(resp){
         await loggedIn(resp);
-        props.history.replace(home);
+        if(localStorageService('historypath').getAccessToken()){
+          console.log(localStorageService('historypath').getAccessToken());
+          props.history.replace(localStorageService('historypath').getAccessToken());
+        }else{
+          console.log('home');
+          props.history.replace(home);
+        }
       }
       setprocess({ loading : false, disabled : false });
     } catch (error) {
@@ -47,9 +54,12 @@ const Login = (props) => {
 
   React.useEffect(() => {
     if(localStorageService('auth').getAccessToken()?.user){
-      props.history.replace(home);
+      if(localStorageService('historypath').getAccessToken()){
+        props.history.replace(localStorageService('historypath').getAccessToken());
+      }else{
+        props.history.replace(home);
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   return(
@@ -66,10 +76,7 @@ const Login = (props) => {
     </Layout.Content>
   )
 };
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loggedIn: values => dispatch(setAuth(values)),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  loggedIn: values => dispatch(setAuth(values)),
+});
 export default connect(null,mapDispatchToProps)(Login);

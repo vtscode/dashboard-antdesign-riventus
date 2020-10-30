@@ -15,5 +15,6 @@ export default {
     { path: pages.onlinesalestracker, exact : true, component: React.lazy(() => import('../views/pages/OnlineSalesTracking')) },
     { path: pages.websitebudgettool, exact : true, component: React.lazy(() => import('../views/pages/WebsiteBudgetTool')) },
     { path: pages.eventbudget, exact : true, component: React.lazy(() => import('../views/pages/EventBudget')) },
+    { path: pages.familybudget, exact : true, component: React.lazy(() => import('../views/pages/FamilyBudget')) },
   ]
 };

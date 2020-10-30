@@ -471,7 +471,7 @@ const summaryChart = {
 }
 const optChartBar = (params = '') => ({
   title: {
-    text: `Estimated vs Actual ${params ? 'Income' : 'Expense'}`,
+    text: 'Estimated vs Actual' + (params ? 'Income' : 'Expense'),
     left: 'center',
     top: 20,
     textStyle: {

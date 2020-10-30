@@ -2,7 +2,7 @@ import React from 'react';
 import { UserOutlined, 
   LaptopOutlined,WindowsOutlined,
   NotificationOutlined,
-  FormOutlined,SnippetsOutlined
+  FormOutlined,SnippetsOutlined,UsergroupAddOutlined
 } from '@ant-design/icons';
 import pathName from "./pathName";
 
@@ -19,6 +19,7 @@ export default {
         { name: 'Online Sales Tracking', url: pages.onlinesalestracker, icon: <SnippetsOutlined /> },
         { name: 'Website Budget Tool', url: pages.websitebudgettool, icon: <LaptopOutlined /> },
         { name: 'Event Budget', url: pages.eventbudget, icon: <SnippetsOutlined /> },
+        { name: 'Family Budget', url: pages.familybudget, icon: <UsergroupAddOutlined /> },
       ]
     },
     { name: 'Forms', url: pages.forms, icon: <FormOutlined/> },

@@ -3,5 +3,6 @@ export default {
     clearAuth : 'CLEARAUTH', 
     setAuth : 'SETAUTH'
   },
-  theme : 'CHANGETHEME'
+  theme : 'CHANGETHEME',
+  historypath : 'SETHISTORYPATH'
 };

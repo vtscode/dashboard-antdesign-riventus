@@ -5,11 +5,12 @@ import Header from './Header';
 import Footer from './Footer';
 import Sidebar from './Siderbar';
 import { connect } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import styled from 'styled-components';
 import pathName from "routes/pathName";
-import {setAuth} from "redux/auth/action";
+import {getMemoState} from "redux/reselect";
 import IsiContent from "components/Content";
-import localStorageService from "services/localStorageService";
+import { setHistoryPath } from "redux/historypath/action";
 
 const {Content} = Layout;
 const WrapperLayout = styled(Layout)`
@@ -25,15 +26,20 @@ const LayoutStyled = styled(Layout)`
 `;
 
 const Base = (props) => {
+  const history = useHistory();
   const colorBgLayout = props.theme.theme === 'light' ? 'inherit' : '#1e2020';
 
   React.useEffect(() => {
-    if(localStorageService('auth').getAccessToken()?.user){
-      props.loggedIn(localStorageService('auth').getAccessToken());
+    console.log(props.userLogin,props.theme,props.user);
+  },[]);
+
+  React.useEffect(() => {
+    if(props.userLogin.user){
+      props.historyPathFunc(history.location.pathname);
     }else{
       window.location.replace(pathName.login);
     }
-  },[localStorageService('auth').getAccessToken()?.user])
+  },[props.userLogin.user])
   return(
     <WrapperLayout colorbglayout={colorBgLayout}>
       <Header />
@@ -51,10 +57,12 @@ const Base = (props) => {
     </WrapperLayout>
   );
 };
-const mapStateToProps = ({theme}) => ({theme});
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loggedIn: values => dispatch(setAuth(values)),
-  };
-};
+const mapStateToProps = (state) => ({
+  theme : state.theme,
+  user : state.auth,
+  userLogin : getMemoState(state)
+});
+const mapDispatchToProps = (dispatch) => ({
+  historyPathFunc : value => dispatch(setHistoryPath(value))
+});
 export default connect(mapStateToProps,mapDispatchToProps)(Base);

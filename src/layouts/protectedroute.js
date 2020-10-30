@@ -1,4 +1,5 @@
 import React from 'react';
+/* eslint-disable */
 import routes from "routes";
 import pathName from "routes/pathName";
 import NotFound from "views/pages/NotFound";

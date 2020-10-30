@@ -12,6 +12,7 @@ export default {
     onlinesalestracker : '/online-sales-tracker',
     websitebudgettool : '/website-budget-tool',
     eventbudget : '/event-budget',
+    familybudget : '/family-budget',
   },
 
   endpoint : {
