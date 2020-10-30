@@ -1,17 +1,16 @@
 import React from 'react';
+import "./index.scss";
 import 'moment/locale/id';
 import moment from 'moment';
 import App from './layouts';
 import ReactDOM from 'react-dom';
-import {store, persistor} from './redux/store';
 import { Provider } from 'react-redux';
 import "../node_modules/antd/dist/antd.css";
+import {store, persistor} from './redux/store';
 import * as serviceWorker from './serviceWorker';
 import {LoadingState} from './components/loading';
 import ErrorPage from './views/pages/ErrorBoundary';
 import { PersistGate } from 'redux-persist/lib/integration/react';
-
-import "./index.scss";
 moment().locale('id');
 
 ReactDOM.render(

@@ -7,6 +7,7 @@ import styled from "styled-components";
 import pathName from "routes/pathName";
 import { clearAuth } from "redux/auth/action";
 import { changeTheme } from "redux/theme/action";
+import { getAuth,getTheme } from "redux/reselect";
 import { UserOutlined,BulbOutlined, BulbFilled } from '@ant-design/icons';
 
 const colorTheme = {
@@ -86,7 +87,7 @@ const App = (props) => {
         </Tooltip>
         <Dropdown trigger={['click']} placement="bottomRight" overlay={() => menu(props,handleLogout)}>
           <Space direction="horizontal" style={{float:'right'}}>
-          <Typography.Text style={props.theme.theme === 'light' ? {color : 'inherit'} : {color : colorTheme.white }}>Hi, <strong>{props?.auth?.user?.user?.username}</strong></Typography.Text>
+          <Typography.Text style={props.theme.theme === 'light' ? {color : 'inherit'} : {color : colorTheme.white }}>Hi, <strong>{props.userLogin.user?.username}</strong></Typography.Text>
           <AvatarStyled 
             size={30} 
             icon={<UserOutlined />}
@@ -98,7 +99,10 @@ const App = (props) => {
   </>);
 };
 
-const mapStateToProps = ({auth,theme}) => ({auth,theme});
+const mapStateToProps = (state) => ({
+  userLogin : getAuth(state),
+  theme : getTheme(state) 
+});
 const mapDispatchToProps = dispatch => ({
   loggedOut : () => dispatch(clearAuth()),
   changeTheme : (value) => dispatch(changeTheme(value)), //passing value {theme : ,colorheader : } from action menu above

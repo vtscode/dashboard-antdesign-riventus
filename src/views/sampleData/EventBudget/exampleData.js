@@ -471,7 +471,7 @@ const summaryChart = {
 }
 const optChartBar = (params = '') => ({
   title: {
-    text: 'Estimated vs Actual' + (params ? 'Income' : 'Expense'),
+    text: 'Estimated vs Actual' + (params ? ' Income' : ' Expense'),
     left: 'center',
     top: 20,
     textStyle: {
@@ -514,7 +514,11 @@ const optChartBar = (params = '') => ({
   },
   legend: {
     show : true,
-    bottom : -7
+    bottom : 10
+  },
+  grid : {
+    height: '50%',
+    width : '80%'
   },
   xAxis: [
     {
@@ -526,7 +530,7 @@ const optChartBar = (params = '') => ({
       },
       axisLabel: {
         interval: 0,
-        rotate: 30
+        rotate: 20
       },
     }
   ],

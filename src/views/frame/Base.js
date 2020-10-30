@@ -1,15 +1,15 @@
 /* eslint-disable */
 import React from 'react';
-import { Layout} from "antd";
+import { Layout } from "antd";
 import Header from './Header';
 import Footer from './Footer';
 import Sidebar from './Siderbar';
 import { connect } from 'react-redux';
-import { useHistory } from "react-router-dom";
 import styled from 'styled-components';
 import pathName from "routes/pathName";
-import {getMemoState} from "redux/reselect";
 import IsiContent from "components/Content";
+import { useHistory } from "react-router-dom";
+import { getAuth,getTheme } from "redux/reselect";
 import { setHistoryPath } from "redux/historypath/action";
 
 const {Content} = Layout;
@@ -28,10 +28,6 @@ const LayoutStyled = styled(Layout)`
 const Base = (props) => {
   const history = useHistory();
   const colorBgLayout = props.theme.theme === 'light' ? 'inherit' : '#1e2020';
-
-  React.useEffect(() => {
-    console.log(props.userLogin,props.theme,props.user);
-  },[]);
 
   React.useEffect(() => {
     if(props.userLogin.user){
@@ -58,9 +54,8 @@ const Base = (props) => {
   );
 };
 const mapStateToProps = (state) => ({
-  theme : state.theme,
-  user : state.auth,
-  userLogin : getMemoState(state)
+  theme : getTheme(state),
+  userLogin : getAuth(state)
 });
 const mapDispatchToProps = (dispatch) => ({
   historyPathFunc : value => dispatch(setHistoryPath(value))

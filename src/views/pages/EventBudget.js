@@ -22,48 +22,56 @@ export default (props) => {
   return(
     <BaseLayout {...contentProps}>
       <center><Typography.Title level={3}>EVENT NAME</Typography.Title></center>
-      <Row>
+      <Row gutter={16}>
         <Col xs={24} md={12} lg={12} xl={12}>
-          <ReactEcharts
-            option={optChartBar('income')}
-            notMerge={true}
-            lazyUpdate={true}
-            theme={"theme_name"}
-            onChartReady={(e) => {}}
-            opts={{}} 
-          />
+          <Card>
+            <ReactEcharts
+              option={optChartBar('income')}
+              notMerge={true}
+              lazyUpdate={true}
+              theme={"theme_name"}
+              onChartReady={(e) => {}}
+              opts={{}} 
+            />
+          </Card>
         </Col>
         <Col xs={24} md={12} lg={12} xl={12}>
-          <ReactEcharts
-            option={summaryChart}
-            notMerge={true}
-            lazyUpdate={true}
-            theme={"theme_name"}
-            onChartReady={(e) => {}}
-            opts={{}} 
-          />
+          <Card>
+            <ReactEcharts
+              option={summaryChart}
+              notMerge={true}
+              lazyUpdate={true}
+              theme={"theme_name"}
+              onChartReady={(e) => {}}
+              opts={{}} 
+            />
+          </Card>
         </Col>
       </Row>
       <Row>
         <Col xs={24} md={12} lg={12} xl={12}>
-          <ReactEcharts
-            option={optChartPie}
-            notMerge={true}
-            lazyUpdate={true}
-            theme={"theme_name"}
-            onChartReady={(e) => {}}
-            opts={{}} 
-          />
+          <Card>
+            <ReactEcharts
+              option={optChartPie}
+              notMerge={true}
+              lazyUpdate={true}
+              theme={"theme_name"}
+              onChartReady={(e) => {}}
+              opts={{}} 
+            />
+          </Card>
         </Col>
         <Col xs={24} md={12} lg={12} xl={12}>
-          <ReactEcharts
-            option={optChartBar()}
-            notMerge={true}
-            lazyUpdate={true}
-            theme={"theme_name"}
-            onChartReady={(e) => {}}
-            opts={{}} 
-          />
+          <Card>
+            <ReactEcharts
+              option={optChartBar()}
+              notMerge={true}
+              lazyUpdate={true}
+              theme={"theme_name"}
+              onChartReady={(e) => {}}
+              opts={{}} 
+            />
+          </Card>
         </Col>
       </Row>
       <Row gutter={16}>

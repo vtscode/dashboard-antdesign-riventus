@@ -5,7 +5,7 @@ import BaseLayout from "../frame/Base";
 import pathName from "routes/pathName";
 import { titleNameByPathUrl } from "utils";
 import ReactEcharts from 'echarts-for-react';
-import { Row,Col,Table, Typography } from "antd";
+import { Row,Col,Table, Typography,Card } from "antd";
 import { OnlineSalesTracking } from "../sampleData";
 
 const App = (props) => {
@@ -24,24 +24,28 @@ const App = (props) => {
       <br />
       <Row>
         <Col xs={24} md={12} lg={12} xl={12}>
-          <ReactEcharts
-            option={OnlineSalesTracking().barData}
-            notMerge={true}
-            lazyUpdate={true}
-            theme={"theme_name"}
-            onChartReady={(e) => console.log(e)}
-            opts={{}} 
-          />
+          <Card>
+            <ReactEcharts
+              option={OnlineSalesTracking().barData}
+              notMerge={true}
+              lazyUpdate={true}
+              theme={"theme_name"}
+              onChartReady={(e) => console.log(e)}
+              opts={{}} 
+            />
+          </Card>
         </Col>
         <Col xs={24} md={24} lg={12} xl={12}>
-          <ReactEcharts
-            option={OnlineSalesTracking().pieData}
-            notMerge={true}
-            lazyUpdate={true}
-            theme={"theme_name"}
-            onChartReady={(e) => console.log(e)}
-            opts={{}} 
-          />
+          <Card>
+            <ReactEcharts
+              option={OnlineSalesTracking().pieData}
+              notMerge={true}
+              lazyUpdate={true}
+              theme={"theme_name"}
+              onChartReady={(e) => console.log(e)}
+              opts={{}} 
+            />
+          </Card>
         </Col>
         <Col span={24}>
         <Table

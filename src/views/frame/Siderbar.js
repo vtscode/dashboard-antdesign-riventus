@@ -4,6 +4,7 @@ import { Layout,Menu } from "antd";
 import { connect } from 'react-redux';
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
+import { getTheme } from "redux/reselect";
 import {useHistory} from 'react-router-dom';
 
 const {SubMenu} = Menu;
@@ -73,5 +74,5 @@ const Sidebar = ({theme}) => {
     </SiderStyled>
   );
 };
-const mapStateToProps = ({theme}) => ({theme});
+const mapStateToProps = (state) => ({theme : getTheme(state)});
 export default connect(mapStateToProps)(Sidebar);
