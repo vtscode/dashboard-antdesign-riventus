@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { titleNameByPathUrl } from "utils";
 import ReactEcharts from 'echarts-for-react';
 import { Card,Typography,Row,Col } from 'antd';
-import { exampleData,TableView,optionsChart } from "../sampleData/FamilyBudget";
+import { exampleData,TableView,optionsChart } from "../sampleData/CollegeBudget";
 
 export default props => {
   const { home } = pathName;
@@ -20,8 +20,6 @@ export default props => {
   };
 
   const WrapperTitle = styled.div`
-    background-image : url(assets/family.png);
-    height : 10em;
     display : flex;
     justify-content : center;
     align-items : center;
@@ -30,7 +28,7 @@ export default props => {
   return(
     <BaseLayout {...contentProps}>
       <WrapperTitle>
-        <Typography.Title level={3}>Budget Overview</Typography.Title>
+        <Typography.Title level={3}>My College Budget</Typography.Title>
       </WrapperTitle>
       <Row>
         <Col xs={24} md={12} lg={12} xl={12}>

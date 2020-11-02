@@ -35,7 +35,7 @@ const Base = (props) => {
     }else{
       window.location.replace(pathName.login);
     }
-  },[props.userLogin.user])
+  },[props.userLogin?.user]);
   return(
     <WrapperLayout colorbglayout={colorBgLayout}>
       <Header />

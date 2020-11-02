@@ -87,7 +87,7 @@ const App = (props) => {
         </Tooltip>
         <Dropdown trigger={['click']} placement="bottomRight" overlay={() => menu(props,handleLogout)}>
           <Space direction="horizontal" style={{float:'right'}}>
-          <Typography.Text style={props.theme.theme === 'light' ? {color : 'inherit'} : {color : colorTheme.white }}>Hi, <strong>{props.userLogin.user?.username}</strong></Typography.Text>
+          <Typography.Text style={props.theme.theme === 'light' ? {color : 'inherit'} : {color : colorTheme.white }}>Hi, <strong>{props.userLogin?.user?.username}</strong></Typography.Text>
           <AvatarStyled 
             size={30} 
             icon={<UserOutlined />}

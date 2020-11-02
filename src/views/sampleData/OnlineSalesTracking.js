@@ -5,7 +5,9 @@ export default (props) => {
 
   const data = [[0,0,9.3],[0,1,13.2],[0,2,7.3],[1,0,15.2],[1,1,4],[1,2,5],[2,0,3.5],[2,1,1.4],[2,2,5.1],[3,0,17.2],[3,1,12],[3,2,10],[4,0,7],[4,1,19],[4,2,8]];
   const barData = {
-      tooltip: {},
+      tooltip: {
+        trigger: 'item',
+      },
       title: {
         text: 'Profit Product per Product (%)',
         left: 'center',

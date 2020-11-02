@@ -57,6 +57,9 @@ export default (props) => {
               lazyUpdate={true}
               theme={"theme_name"}
               onChartReady={(e) => {}}
+              onEvents={{
+                click : (e) => console.log(e)
+              }}
               opts={{}} 
             />
           </Card>

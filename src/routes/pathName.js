@@ -13,6 +13,7 @@ export default {
     websitebudgettool : '/website-budget-tool',
     eventbudget : '/event-budget',
     familybudget : '/family-budget',
+    collegebudget : '/college-budget',
   },
 
   endpoint : {

@@ -563,6 +563,123 @@ const defaultData = {
       ]
     },
   ],
+  monthlyIncome : [
+    {
+      id : randomString(7),
+      name_field : 'Fixed Income',
+      amount : 1500,
+    },
+    {
+      id : randomString(7),
+      name_field : 'Financial Aid',
+      amount : 500,
+    },
+    {
+      id : randomString(7),
+      name_field : 'Loans',
+      amount : 500,
+    },
+    {
+      id : randomString(7),
+      name_field : 'Other Income',
+      amount : 250,
+    },
+  ],
+  monthlyExpenses : [
+    {
+      id : randomString(7),
+      name_field : 'Rent',
+      amount : 350,
+    },
+    {
+      id : randomString(7),
+      name_field : 'Utilities',
+      amount : 50,
+    },
+    {
+      id : randomString(7),
+      name_field : 'Cell Phone',
+      amount : 75,
+    },
+    {
+      id : randomString(7),
+      name_field : 'Groceries',
+      amount : 250,
+    },
+    {
+      id : randomString(7),
+      name_field : 'Auto Expenses',
+      amount : 50,
+    },
+    {
+      id : randomString(7),
+      name_field : 'Student Loans',
+      amount : 500,
+    },
+    {
+      id : randomString(7),
+      name_field : 'Credit Score',
+      amount : 275,
+    },
+    {
+      id : randomString(7),
+      name_field : 'Insurance',
+      amount : 125,
+    },
+    {
+      id : randomString(7),
+      name_field : 'Hair Cut',
+      amount : 50,
+    },
+    {
+      id : randomString(7),
+      name_field : 'Entertainment',
+      amount : 0,
+    },
+    {
+      id : randomString(7),
+      name_field : 'Miscellaneous',
+      amount : 0,
+    },
+  ],
+  semesterExpenses : [
+    {
+      id : randomString(7),
+      name_field : 'Tuition',
+      amount : 750,
+      perMonth : 188
+    },
+    {
+      id : randomString(7),
+      name_field : 'Lab fees',
+      amount : 300,
+      perMonth : 75
+    },
+    {
+      id : randomString(7),
+      name_field : 'Books',
+      amount : 500,
+      perMonth : 125
+    },
+    {
+      id : randomString(7),
+      name_field : 'Deposits',
+      amount : 0,
+      perMonth : 0
+    },
+    {
+      id : randomString(7),
+      name_field : 'Transportation',
+      amount : 0,
+      perMonth : 0
+    },
+    {
+      id : randomString(7),
+      name_field : 'Other Fees',
+      amount : 0,
+      perMonth : 0
+    },
+  ],
 };
 
 const optionsChart = {

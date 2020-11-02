@@ -1,3 +1,5 @@
+/* eslint-disable */
+import echarts from "echarts";
 import { randomString } from 'utils/generate';
 const data = {
   expense : [
@@ -470,6 +472,7 @@ const summaryChart = {
   },
 }
 const optChartBar = (params = '') => ({
+  color : ['#3095B8','#DE5833'],
   title: {
     text: 'Estimated vs Actual' + (params ? ' Income' : ' Expense'),
     left: 'center',
@@ -564,9 +567,24 @@ const optChartBar = (params = '') => ({
     {
       name: 'Rerata',
       type: 'line',
+      lineStyle: {
+        color: '#188038',
+        width: 3
+      },
       yAxisIndex: 1,
       smooth: true,
-      areaStyle: {},
+      areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+          offset: 0,
+          color: '#143C4A'
+        },{
+          offset: 0.5,
+          color: '#3095B8'
+        }, {
+          offset: 1,
+          color: '#eee'
+        }])
+      },
       data: params ? data.income.map(x => ((x.totalActual+x.totalEstimated)/2)) :  data.expense.map(x => ((x.totalActual+x.totalEstimated)/2))
     }
   ]
