@@ -1,81 +1,122 @@
+import echarts from 'echarts';
 const option = {
   title: {
-    text:'Temperature change in the next week',
-    subtext:'Purely fictitious'
+    left: 'center',
+    text: 'Temperature change in the next week',
+    subtext: 'Purely Fictitious'
   },
   tooltip: {
-    trigger:'axis'
+    trigger: 'axis'
   },
   legend: {
-    data: ['Highest Temperature','Lowest Temperature']
+    bottom : 0
   },
   toolbox: {
     show: true,
     feature: {
       dataZoom: {
-        yAxisIndex:'none'
+        yAxisIndex: 'none',
+        title : 'Zoom Data'
       },
-      dataView: {readOnly: false},
-      magicType: {type: ['line','bar']},
-      restore: {},
-      saveAsImage: {}
+      dataView: {
+        readOnly: false,
+        title : 'View Data',
+        lang : ['All Data', 'Close', 'Refresh']
+      },
+      magicType: {
+        type: ['line', 'bar'],
+        title : {
+          line : 'Line',
+          bar : 'Bar'
+        }
+      },
+      restore: {
+        title : 'Restore'
+      },
+      saveAsImage: {
+        title : 'Download Image'
+      }
     }
   },
   xAxis: {
-    type:'category',
+    type: 'category',
     boundaryGap: false,
-    data: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+    data : ['2020-11-01','2020-11-02','2020-11-03','2020-11-04','2020-11-05','2020-11-06','2020-11-07','2020-11-08','2020-11-09','2020-11-10','2020-11-11','2020-11-12','2020-11-13','2020-11-14','2020-11-15','2020-11-16','2020-11-17','2020-11-17','2020-11-18','2020-11-19','2020-11-20'],
   },
   yAxis: {
-    type:'value',
+    type: 'value',
     axisLabel: {
-      formatter:'{value} °C'
+      formatter: '{value} °C'
     }
   },
   series: [
     {
-      name:'Highest Temperature',
-      type:'line',
-      data: [11, 11, 15, 13, 12, 13, 10],
+      name: 'Highest Temperature',
+      type: 'line',
+      smooth: true,
+      data: [
+        ['2020-11-01',11],
+        ['2020-11-02',11], 
+        ['2020-11-03',15], 
+        ['2020-11-04',13],
+        ['2020-11-05',12],
+        ['2020-11-06',13],
+        ['2020-11-07',10]
+      ],
       markPoint: {
+        itemStyle: {
+          color : 'rgba(46, 144, 28, 0.7)'
+        },
         data: [
-          {type:'max', name:'Maximum Value'},
-          {type:'min', name:'Minimum Value'}
+          {type: 'average', name: 'Average Value'},
         ]
       },
       markLine: {
         data: [
-          {type:'average', name:'average'}
+          {type: 'average', name: 'average'}
         ]
-      }
+      },
+      lineStyle: {
+        color: '#188038',
+        width: 3
+      },
+      areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+          offset: 0,
+          color: '#143C4A'
+        },{
+          offset: 0.5,
+          color: '#3095B8'
+        }, {
+          offset: 1,
+          color: '#eee'
+        }])
+      },
     },
-    {
-      name:'Lowest Temperature',
-      type:'line',
-      data: [1, -2, 2, 5, 3, 2, 0],
-      markPoint: {
-        data: [
-          {name:'Weekly lowest', value: -2, xAxis: 1, yAxis: -1.5}
-        ]
+  ]
+};
+export default option;
+
+export const optionGauge = {
+  tooltip: {
+    formatter: '{a} <br/>{b} : {c}%'
+  },
+  toolbox: {
+    feature: {
+      restore: {
+        title : 'Restore',
       },
-      markLine: {
-        data: [
-          {type:'average', name:'average'},
-          [{
-              symbol:'none',
-              x: '90%',
-              yAxis:'max'
-          }, {
-            symbol:'circle',
-            label: {
-              position:'start',
-              formatter:'Maximum Value'
-            },
-            type:'max',
-            name:'Highest point'
-          }]
-        ]
+      saveAsImage: {
+        title : 'Download Image'
       }
+    }
+  },
+  series: [
+    {
+      name: 'Business indicators',
+      type: 'gauge',
+      detail: {formatter: '{value}%'},
+      data: [{value: (Math.random() * 100).toFixed(2) - 0, name: 'Completion rate'}]
     }
   ]
 };

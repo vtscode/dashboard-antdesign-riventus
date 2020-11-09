@@ -1,25 +1,26 @@
 /* eslint-disable */
 import React from 'react';
-import { numberFormat } from "utils";
 import { Typography,Table,Space } from "antd";
+import { randomString } from 'utils/generate';
+import { numberFormat,noImagePath } from "utils";
 
 const dummy = [
   {
-    img : '',
+    img : noImagePath,
     field_title : 'Abadoned Cart 7 Days', 
     field_desc : '4024 Sent | 124 Clicks',
     value_title : 5231,
     value_desc : '41 Orders | $150 AOV',
   },
   {
-    img : '',
+    img : noImagePath,
     field_title : 'Abadoned Cart 15 Min', 
     field_desc : '4024 Sent | 124 Clicks',
     value_title : 24521,
     value_desc : '41 Orders | $150 AOV',
   },
   {
-    img : '',
+    img : noImagePath,
     field_title : 'Abadoned Cart 15 Min', 
     field_desc : 24521,
     value_title : '4024 Sent | 124 Clicks',
@@ -59,6 +60,7 @@ const App = (props) => {
 
   return (
   <Table 
+    rowKey={row => row.id || randomString(7)}
     columns={columns}
     pagination={{
       pageSize:10,

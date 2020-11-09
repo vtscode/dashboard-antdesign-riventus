@@ -1,3 +1,3 @@
 import TableView from './TableView';
-import chartData from './exampleData';
-export { TableView,chartData };
+import chartData,{optionGauge} from './exampleData';
+export { TableView,chartData,optionGauge };
