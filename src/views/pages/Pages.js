@@ -1,6 +1,7 @@
 import React from 'react';
 import BaseLayout from "../frame/Base";
 import pathName from "routes/pathName";
+import { titleNameByPathUrl } from "utils";
 
 export default (props) => {
   const { home } = pathName;
@@ -9,10 +10,10 @@ export default (props) => {
   const contentProps = {
     breadcrumb : [
       { text : 'Home', link : home },
-      { text : 'Page' },
+      { text : titleNameByPathUrl(props.location.pathname) },
     ],
-    title : 'Page 1',
-    subtitle : 'This is Subtitle page 1',
+    title : titleNameByPathUrl(props.location.pathname),
+    subtitle : `This is Subtitle ${titleNameByPathUrl(props.location.pathname)}`,
   }
 
   return(

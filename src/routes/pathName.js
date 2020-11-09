@@ -15,7 +15,13 @@ export default {
     familybudget : '/family-budget',
     collegebudget : '/college-budget',
   },
-
+  chart : {
+    map : '/chart-map',
+    candlestick : '/chart-candlestick',
+    graph : '/chart-graph',
+    tree : '/chart-tree',
+    timelineFinance : '/timeline-finance',
+  },
   endpoint : {
     loginAdmin : '/admin/auth/local',
     login : '/auth/local',

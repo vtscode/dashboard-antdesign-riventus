@@ -581,6 +581,19 @@ const optionsChart = {
       type: 'shadow'
     }
   },
+  toolbox: {
+    feature: {
+      dataView: {
+        show: true, 
+        readOnly: false,
+        title : 'Data View'
+      },
+      saveAsImage: {
+        show: true,
+        title : 'Download Chart'
+      }
+    }
+  },
   legend: {
     show : true,
     bottom : 0

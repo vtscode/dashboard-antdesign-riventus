@@ -30,7 +30,7 @@ const Base = (props) => {
   const colorBgLayout = props.theme.theme === 'light' ? 'inherit' : '#1e2020';
 
   React.useEffect(() => {
-    if(props.userLogin.user){
+    if(props.userLogin?.user){
       props.historyPathFunc(history.location.pathname);
     }else{
       window.location.replace(pathName.login);

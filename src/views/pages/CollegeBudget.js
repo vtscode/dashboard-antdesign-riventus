@@ -6,7 +6,8 @@ import styled from "styled-components";
 import { titleNameByPathUrl } from "utils";
 import ReactEcharts from 'echarts-for-react';
 import { Card,Typography,Row,Col } from 'antd';
-import { exampleData,TableView,optionsChart } from "../sampleData/CollegeBudget";
+import { exampleData,TableView,
+  optMonthExpenses,optSmstrExpense,optMonthIncome } from "../sampleData/CollegeBudget";
 
 export default props => {
   const { home } = pathName;
@@ -31,48 +32,76 @@ export default props => {
         <Typography.Title level={3}>My College Budget</Typography.Title>
       </WrapperTitle>
       <Row>
-        <Col xs={24} md={12} lg={12} xl={12}>
+        <Col xs={24} md={12} lg={8} xl={8}>
           <Row>
             <Col span={24}>
-              <Typography.Title level={5}>Overview</Typography.Title>
-              <hr/>
-              <TableView
-                type=""
-                dataSource={exampleData.overview}
+              <ReactEcharts
+                option={optMonthIncome}
+                notMerge={true}
+                lazyUpdate={true}
+                theme={"theme_name"}
+                onChartReady={(e) => {}}
+                opts={{}}
+                style={{height:500}}
               />
             </Col>
             <Col span={24}>
-              <Typography.Title level={5}>Income Summary</Typography.Title>
+              <Typography.Title level={5}>Monthly Income</Typography.Title>
+              <hr/>
+              <TableView
+                type="income"
+                dataSource={exampleData.monthlyIncome}
+              />
+            </Col>
+          </Row>
+        </Col>
+        <Col xs={24} md={12} lg={8} xl={8}>
+          <Row>
+            <Col span={24}>
+              <ReactEcharts
+                option={optMonthExpenses}
+                notMerge={true}
+                lazyUpdate={true}
+                theme={"theme_name"}
+                onChartReady={(e) => {}}
+                opts={{}}
+                style={{height:500}}
+              />
+            </Col>
+            <Col span={24}>
+              <Typography.Title level={5}>Monthly Expenses</Typography.Title>
               <hr/>
               <Card>
                 <TableView
-                  type="income"
-                  dataSource={exampleData.incomeSum}
+                  type="expense"
+                  dataSource={exampleData.monthlyExpenses}
                 />
               </Card>
             </Col>
           </Row>
         </Col>
-        <Col xs={24} md={12} lg={12} xl={12}>
-          <ReactEcharts
-            option={optionsChart}
-            notMerge={true}
-            lazyUpdate={true}
-            theme={"theme_name"}
-            onChartReady={(e) => {}}
-            opts={{}}
-            style={{height:'97%'}}
-          />
-        </Col>
-      </Row>
-      <Row>
-        <Col span={24}>
-          <Card>
-            <TableView
-              dataSource={exampleData.detailExpenses}
-              type="detail"
-            />
-          </Card>
+        <Col xs={24} md={12} lg={8} xl={8}>
+          <Row>
+            <Col span={24}>
+              <ReactEcharts
+                option={optSmstrExpense}
+                notMerge={true}
+                lazyUpdate={true}
+                theme={"theme_name"}
+                onChartReady={(e) => {}}
+                opts={{}}
+                style={{height:500}}
+              />
+            </Col>
+            <Col span={24}>
+              <Typography.Title level={5}>Semester Expense</Typography.Title>
+              <hr/>
+              <TableView
+                type="semester"
+                dataSource={exampleData.semesterExpenses}
+              />
+            </Col>
+          </Row>
         </Col>
       </Row>
     </BaseLayout>

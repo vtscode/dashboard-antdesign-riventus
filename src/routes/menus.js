@@ -1,12 +1,12 @@
 import React from 'react';
 import { UserOutlined, 
-  LaptopOutlined,WindowsOutlined,
-  NotificationOutlined,BankOutlined,
-  FormOutlined,SnippetsOutlined,UsergroupAddOutlined
+  LaptopOutlined,WindowsOutlined,MoneyCollectOutlined,
+  AimOutlined,BankOutlined,AreaChartOutlined,ClusterOutlined,SlidersOutlined,
+  FormOutlined,SnippetsOutlined,UsergroupAddOutlined,AppstoreOutlined
 } from '@ant-design/icons';
 import pathName from "./pathName";
 
-const { home,pages } = pathName;
+const { home,pages,chart } = pathName;
 
 export default {
   items: [
@@ -26,11 +26,15 @@ export default {
     { name: 'Forms', url: pages.forms, icon: <FormOutlined/> },
     { name: 'PDF Example', url: pages.pdfexample, icon: <FormOutlined/> },
     {
-      name: 'Pages',
-      icon: <NotificationOutlined />,
+      name: 'Example Chart',
+      icon: <AreaChartOutlined />,
       url: pages.page1,
       children: [
-        { name: 'Page 1', url: pages.page1, icon: <LaptopOutlined /> },
+        // { name: 'Map', url: chart.map, icon: <AimOutlined /> },
+        { name: 'Candle Stick', url: chart.candlestick, icon: <SlidersOutlined /> },
+        { name: 'Mix Timeline Finance', url: chart.timelineFinance, icon: <MoneyCollectOutlined /> },
+        { name: 'Tree', url: chart.tree, icon: <ClusterOutlined /> },
+        { name: 'Graph', url: chart.graph, icon: <AppstoreOutlined /> },
       ]
     },
   ]
