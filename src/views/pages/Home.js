@@ -1,10 +1,10 @@
 import React from 'react';
+import { numberFormat } from 'utils';
 import { connect } from 'react-redux';
 import BaseLayout from "../frame/Base";
 import { getAuth } from "redux/reselect";
-import ReactEcharts from 'echarts-for-react';
-import { numberFormat } from 'utils';
 import { nFormatter } from 'utils/generate';
+import ReactEcharts from 'echarts-for-react';
 import { Button,Menu, Dropdown, Typography,Space,
   Statistic, Row, Col,Tag,Card,Tabs } from "antd";
 import useCustomReducer from "hooks/useCustomReducer";
