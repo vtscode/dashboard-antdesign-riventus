@@ -1,2 +1,3 @@
 import TableView from './TableView';
-export { TableView };
+import chartData from './exampleData';
+export { TableView,chartData };
