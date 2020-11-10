@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { numberFormat } from 'utils';
 import { connect } from 'react-redux';

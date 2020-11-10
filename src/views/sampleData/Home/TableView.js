@@ -22,8 +22,8 @@ const dummy = [
   {
     img : noImagePath,
     field_title : 'Abadoned Cart 15 Min', 
-    field_desc : 24521,
-    value_title : '4024 Sent | 124 Clicks',
+    field_desc : '4024 Sent | 124 Clicks',
+    value_title : 24521,
     value_desc : '41 Orders | $150 AOV',
   },
 ]

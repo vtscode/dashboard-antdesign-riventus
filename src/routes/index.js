@@ -20,5 +20,7 @@ export default {
     { path: chart.map, exact : true, component: React.lazy(() => import('views/pages/Chart/MapChart')) },
     { path: chart.candlestick, exact : true, component: React.lazy(() => import('views/pages/Chart/CandlestickChart')) },
     { path: chart.timelineFinance, exact : true, component: React.lazy(() => import('views/pages/Chart/MixTimelineFinance')) },
+    { path: chart.graph, exact : true, component: React.lazy(() => import('views/pages/Chart/GraphChart')) },
+    { path: chart.tree, exact : true, component: React.lazy(() => import('views/pages/Chart/TreeChart')) },
   ]
 };

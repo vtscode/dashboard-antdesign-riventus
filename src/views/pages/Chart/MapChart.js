@@ -4,8 +4,9 @@ import pathName from "routes/pathName";
 import BaseLayout from "views/frame/Base";
 import { titleNameByPathUrl } from "utils";
 import buslineData from "./dummy/busline.json";
-import ReactEchartsCore from 'echarts-for-react';
+// import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts';
+/* eslint-disable */
 
 export default (props) => {
   const { home } = pathName;
@@ -211,7 +212,7 @@ export default (props) => {
     <BaseLayout {...contentProps}>
       <Row>
         <Col xs={24} md={12} lg={12} xl={12}>
-          {/* <ReactEchartsCore
+          {/* <ReactEcharts
             echarts={echarts}
             option={option}
             notMerge={true}

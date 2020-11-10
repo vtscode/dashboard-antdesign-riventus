@@ -77,7 +77,7 @@ const option = {
         ]
       },
       lineStyle: {
-        color: '#188038',
+        color: '#1890FF',
         width: 3
       },
       areaStyle: {
