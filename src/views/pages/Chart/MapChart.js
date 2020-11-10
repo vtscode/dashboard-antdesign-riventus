@@ -4,7 +4,7 @@ import pathName from "routes/pathName";
 import BaseLayout from "views/frame/Base";
 import { titleNameByPathUrl } from "utils";
 import buslineData from "./dummy/busline.json";
-// import ReactEcharts from 'echarts-for-react';
+import ReactEcharts from 'echarts-for-react';
 import 'echarts/extension/bmap/bmap';
 import echarts from 'echarts';
 // import BMap from 'BMap';
@@ -41,6 +41,7 @@ export default (props) => {
   }));
 
   const option = {
+    backgroundColor: '#222',
     bmap: {
       center: [116.46, 39.92],
       zoom: 10,
@@ -214,15 +215,15 @@ export default (props) => {
     <BaseLayout {...contentProps}>
       <Row>
         <Col xs={24} md={12} lg={12} xl={12}>
-          {/* <ReactEcharts
+          <ReactEcharts
             option={option}
             notMerge={true}
             lazyUpdate={true}
             theme={"theme_name"}
             onChartReady={(e) => {}}
             opts={{}}
-            style={{height:'97%'}}
-          /> */}
+            style={{height:800}}
+          />
         </Col>
       </Row>
     </BaseLayout>
