@@ -5,7 +5,9 @@ import BaseLayout from "views/frame/Base";
 import { titleNameByPathUrl } from "utils";
 import buslineData from "./dummy/busline.json";
 // import ReactEcharts from 'echarts-for-react';
+import 'echarts/extension/bmap/bmap';
 import echarts from 'echarts';
+// import BMap from 'BMap';
 /* eslint-disable */
 
 export default (props) => {
@@ -213,7 +215,6 @@ export default (props) => {
       <Row>
         <Col xs={24} md={12} lg={12} xl={12}>
           {/* <ReactEcharts
-            echarts={echarts}
             option={option}
             notMerge={true}
             lazyUpdate={true}

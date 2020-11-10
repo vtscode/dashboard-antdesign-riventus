@@ -31,7 +31,7 @@ export default {
       icon: <AreaChartOutlined />,
       url: pages.page1,
       children: [
-        // { name: 'Map', url: chart.map, icon: <AimOutlined /> },
+        { name: 'Map', url: chart.map, icon: <AimOutlined /> },
         { name: 'Candle Stick', url: chart.candlestick, icon: <SlidersOutlined /> },
         { name: 'Mix Timeline Finance', url: chart.timelineFinance, icon: <MoneyCollectOutlined /> },
         { name: 'Tree', url: chart.tree, icon: <ClusterOutlined /> },

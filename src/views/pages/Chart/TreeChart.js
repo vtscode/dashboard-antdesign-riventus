@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row,Col, Card } from 'antd';
-import optionData from "./dummy/tree";
+import optionData,{sankeyOpt} from "./dummy/tree";
 import pathName from "routes/pathName";
 import BaseLayout from "views/frame/Base";
 import { titleNameByPathUrl } from "utils";
@@ -22,10 +22,23 @@ export default (props) => {
   return(
     <BaseLayout {...contentProps}>
       <Row>
-        <Col span={24}>
+        <Col xs={24} md={24} lg={12} xl={12}>
           <Card>
             <ReactEcharts
               option={optionData}
+              notMerge={true}
+              lazyUpdate={true}
+              theme={"theme_name"}
+              onChartReady={(e) => {}}
+              opts={{}}
+              style={{height:800}}
+            />
+          </Card>
+        </Col>
+        <Col xs={24} md={24} lg={12} xl={12}>
+          <Card>
+            <ReactEcharts
+              option={sankeyOpt}
               notMerge={true}
               lazyUpdate={true}
               theme={"theme_name"}
