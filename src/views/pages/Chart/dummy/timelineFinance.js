@@ -212,7 +212,7 @@ const option = {
   },
   options: [
     {
-      title: {text: '2002 National macroeconomic indicators'},
+      title: {text: '2002 National Macroeconomic indicators'},
       series: [
         {data: dataMap.dataGDP['2002']},
         {data: dataMap.dataFinancial['2002']},

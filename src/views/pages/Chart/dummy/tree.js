@@ -378,7 +378,7 @@ const sankeyOpt = {
       type: 'sankey',
       data: dataSankey.nodes,
       links: dataSankey.links,
-      // focusNodeAdjacency: 'allEdges',
+      focusNodeAdjacency: 'allEdges',
       itemStyle: {
         borderWidth: 1,
         borderColor: '#aaa'
