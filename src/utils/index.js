@@ -23,10 +23,25 @@ const titleNameByPathUrl = (path) => {
     return path.substring(1,path.length).split('-').map(x => (x.charAt(0).toUpperCase() + x.substring(1,x.length) )).join(' ');
   }
 }
+const appendScript = (scriptToAppend) => {
+	const script = document.createElement("script");
+	script.src = scriptToAppend;
+	script.async = true;
+	document.head.appendChild(script);
+};
+const removeScript = (scriptToremove) => {
+  let allsuspects=document.getElementsByTagName("script");
+  for (let i=allsuspects.length; i>=0; i--){
+    if (allsuspects[i] && allsuspects[i].getAttribute("src")!==null
+    && allsuspects[i].getAttribute("src").indexOf(`${scriptToremove}`) !== -1 ){
+      allsuspects[i].parentNode.removeChild(allsuspects[i]);
+    }
+  }
+}
 export { initURL, initialEndpoint, defaultPathDomain, 
   formatDateInput, 
-  formDateInputValue,
-  formDateDisplayValue, 
+  formDateInputValue,removeScript,
+  formDateDisplayValue, appendScript,
   numberFormat,noImagePath,roundedNumber,
   colorGenerator, titleNameByPathUrl
 };

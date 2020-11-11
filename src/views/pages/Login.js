@@ -33,7 +33,7 @@ const Login = (props) => {
           console.log(localStorageService('historypath').getAccessToken());
           props.history.replace(localStorageService('historypath').getAccessToken());
         }else{
-          console.log('home');
+          // console.log('home');
           props.history.replace(home);
         }
       }
