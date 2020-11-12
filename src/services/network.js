@@ -5,13 +5,16 @@ export const headers = {
   'Accept': '*/*',
   'Content-Type': 'application/json',
 };
-export const configRequest = (method, url, data) => {
-  return { headers ,method, url: `${initURL}${url}`, data };
+export const configRequest = (method, url, customurl = initURL, data) => {
+  return { headers, method, url: `${customurl}${url}`, data };
 };
 
 export default {
-  get : async (url) => {
-    const conf = configRequest('get', url);
+  get : async (url, customUrl, others = {}) => {
+    let conf = configRequest('get', url, customUrl);
+    if(Object.keys(others).length){
+      conf = {...conf,...others};
+    }
     try {
       const { data } = await interceptor.request(conf);
       return data;
@@ -19,9 +22,11 @@ export default {
       console.log(err);
     }
   },
-  post: async (url, params) => {
-    
-    const conf = configRequest('post', url, params);
+  post: async (url, customUrl,params,others = {}) => {
+    let conf = configRequest('post', url, customUrl, params);
+    if(Object.keys(others).length){
+      conf = {...conf,...others};
+    }
     try {
       const { data } = await interceptor.request(conf);
       return data;
@@ -29,9 +34,11 @@ export default {
       console.log(err);
     }
   },
-  patch: async (url, params) => {
-    
-    const conf = configRequest('patch', url, params);
+  patch: async (url, customUrl, params, others = {}) => {
+    let conf = configRequest('patch', url, customUrl, params);
+    if(Object.keys(others).length){
+      conf = {...conf,...others};
+    }
     try {
       const { data } = await interceptor.create({}).request(conf);
       return data;
@@ -39,9 +46,11 @@ export default {
       console.log(err);
     }
   },
-  put: async (url, params) => {
-    
-    const conf = configRequest('put', url, params);
+  put: async (url, customUrl, params, others = {}) => {
+    let conf = configRequest('put', url, customUrl, params);
+    if(Object.keys(others).length){
+      conf = {...conf,...others};
+    }
     try {
       const { data } = await interceptor.request(conf);
       return data;
@@ -49,9 +58,11 @@ export default {
       console.log(err);
     }
   },
-  delete: async (url, params) => {
-    
-    const conf = configRequest('delete', url, params);
+  delete: async (url, customUrl, params, others = {}) => {
+    let conf = configRequest('delete', url, customUrl, params);
+    if(Object.keys(others).length){
+      conf = {...conf,...others};
+    }
     try {
       const { data } = await interceptor.request(conf);
       return data;

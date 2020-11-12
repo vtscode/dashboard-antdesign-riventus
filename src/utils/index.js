@@ -38,10 +38,11 @@ const removeScript = (scriptToremove) => {
     }
   }
 }
-export { initURL, initialEndpoint, defaultPathDomain, 
-  formatDateInput, 
+export { 
+  initURL, initialEndpoint, 
   formDateInputValue,removeScript,
+  formatDateInput, defaultPathDomain,
   formDateDisplayValue, appendScript,
+  colorGenerator, titleNameByPathUrl,
   numberFormat,noImagePath,roundedNumber,
-  colorGenerator, titleNameByPathUrl
 };

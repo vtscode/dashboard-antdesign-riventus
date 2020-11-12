@@ -26,6 +26,7 @@ export default {
     },
     { name: 'Forms', url: pages.forms, icon: <FormOutlined/> },
     { name: 'PDF Example', url: pages.pdfexample, icon: <FormOutlined/> },
+    { name: 'Map React Leaflet', url: pages.mapleaftlet, icon: <AimOutlined/> },
     {
       name: 'Example Chart',
       icon: <AreaChartOutlined />,

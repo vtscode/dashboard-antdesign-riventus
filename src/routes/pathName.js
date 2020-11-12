@@ -14,6 +14,7 @@ export default {
     eventbudget : '/event-budget',
     familybudget : '/family-budget',
     collegebudget : '/college-budget',
+    mapleaftlet : '/leaflet-map',
   },
   chart : {
     map : '/chart-map',
