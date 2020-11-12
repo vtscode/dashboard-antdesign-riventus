@@ -5,8 +5,40 @@ import pathName from "routes/pathName";
 import BaseLayout from "views/frame/Base";
 import { titleNameByPathUrl } from "utils";
 import MarkerClusterGroup from "react-leaflet-markercluster";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents} from 'react-leaflet';
 /* eslint-disable */
+
+const pointerIcon = new L.Icon({
+  iconUrl: '/assets/marker.svg',
+  iconRetinaUrl: '/assets/marker.svg',
+  iconAnchor: [5, 55],
+  popupAnchor: [10, -44],
+  iconSize: [50, 50],
+  shadowSize: [68, 95],
+  shadowAnchor: [20, 92]
+});
+
+const LocationMarker = () => {
+  const [position, setPosition] = React.useState(null);
+  const map = useMapEvents({
+    click() {
+      map.locate()
+    },
+    locationfound(e) {
+      setPosition(e.latlng)
+      map.flyTo(e.latlng, map.getZoom())
+    },
+  })
+
+  return position === null ? null : (
+    <Marker 
+      position={position}
+      icon={pointerIcon}
+    >
+      <Popup>You are here</Popup>
+    </Marker>
+  )
+}
 
 export default (props) => {
   const { home } = pathName;
@@ -39,15 +71,7 @@ export default (props) => {
   React.useEffect(() => {
     fetchData();
   },[]);
-  const pointerIcon = new L.Icon({
-    iconUrl: '/assets/marker.svg',
-    iconRetinaUrl: '/assets/marker.svg',
-    iconAnchor: [5, 55],
-    popupAnchor: [10, -44],
-    iconSize: [50, 50],
-    shadowSize: [68, 95],
-    shadowAnchor: [20, 92]
-  });
+  
 
   return(
     <BaseLayout {...contentProps}>
@@ -82,6 +106,7 @@ export default (props) => {
                 </Marker>))
               }
             </MarkerClusterGroup>
+            <LocationMarker />
           </MapContainer>
            : <Skeleton />
           }
