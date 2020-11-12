@@ -62,7 +62,6 @@ export default (props) => {
     try {
       const resp = await request.get('resource/wr8u-xric.json?$limit=1000&$$app_token=THKTQSSSfIoozEkK9vt2YriS4','https://data.sfgov.org/');
       setState(prev => ({...prev, data : resp }));
-      console.log(resp);
     } catch (error) {
       console.log(error);
     }
