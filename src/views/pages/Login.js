@@ -17,27 +17,28 @@ const Login = (props) => {
   const [process,setprocess] = React.useState({loading : false, disabled : false });
 
   const handleSubmit = async (e) => {
-    setprocess({ loading : true, disabled : true });
-    let loginpath;
-    try {
-      const values = await form.validateFields();
-      if(adminUserName.includes(values.identifier)){
-        loginpath = endpoint.loginAdmin;
-      }else{
-        loginpath = endpoint.login;
-      }
-      const resp = await network.post(loginpath,values);
-      if(resp){
-        await loggedIn(resp);
-        if(localStorageService('historypath').getAccessToken()){
-          console.log(localStorageService('historypath').getAccessToken());
-          props.history.replace(localStorageService('historypath').getAccessToken());
-        }else{
-          // console.log('home');
-          props.history.replace(home);
-        }
-      }
-      setprocess({ loading : false, disabled : false });
+    props.history.replace(home);
+//     setprocess({ loading : true, disabled : true });
+//     let loginpath;
+//     try {
+//       const values = await form.validateFields();
+//       if(adminUserName.includes(values.identifier)){
+//         loginpath = endpoint.loginAdmin;
+//       }else{
+//         loginpath = endpoint.login;
+//       }
+//       const resp = await network.post(loginpath,values);
+//       if(resp){
+//         await loggedIn(resp);
+//         if(localStorageService('historypath').getAccessToken()){
+//           console.log(localStorageService('historypath').getAccessToken());
+//           props.history.replace(localStorageService('historypath').getAccessToken());
+//         }else{
+//           // console.log('home');
+//           props.history.replace(home);
+//         }
+//       }
+//       setprocess({ loading : false, disabled : false });
     } catch (error) {
       setprocess({ loading : false, disabled : false });
       console.log(error);
