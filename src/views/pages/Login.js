@@ -17,10 +17,11 @@ const Login = (props) => {
   const [process,setprocess] = React.useState({loading : false, disabled : false });
 
   const handleSubmit = async (e) => {
-    props.history.replace(home);
+    
 //     setprocess({ loading : true, disabled : true });
 //     let loginpath;
-//     try {
+    try {
+      props.history.replace(home);
 //       const values = await form.validateFields();
 //       if(adminUserName.includes(values.identifier)){
 //         loginpath = endpoint.loginAdmin;
